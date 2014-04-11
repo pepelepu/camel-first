@@ -23,7 +23,7 @@ public class CaseUnoRoute extends RouteBuilder {
 										// en el xml
 
 				// lamada al WS
-				.to("spring-ws:http://baslije12.nextel.com.ar:7778/avalonWS/AvalonWS")
+				.to("spring-ws:http://xxxxxxxxxxxx.com.ar:7778/avalonWS/AvalonWS")
 
 				// log del body
 				.log(LoggingLevel.INFO, "${body}");

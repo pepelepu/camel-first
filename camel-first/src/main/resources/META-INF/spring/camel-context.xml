@@ -23,7 +23,7 @@
 
 	<!-- Este WS es un producer endpoint (o sea, para usar en un 'to') -->
 	<cxf:cxfEndpoint id="avalonEndpoint"
-		address="http://baslije12.nextel.com.ar:7778/avalonWS/AvalonWS"
+		address="http://xxxxxxxx.com.ar:7778/avalonWS/AvalonWS"
 		wsdlURL="src/main/resources/META-INF/AvalonWS.wsdl">
 		<cxf:properties>
 			<entry key="dataFormat" value="PAYLOAD" />
