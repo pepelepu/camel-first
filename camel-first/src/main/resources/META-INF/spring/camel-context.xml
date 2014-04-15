@@ -11,8 +11,8 @@
 	<bean id="secondRoute" class="com.camel.first.route.SecondRoute" />
 	<bean id="caseUnoRoute" class="com.camel.first.route.CaseUnoRoute" />
 	<bean id="caseDosRoute" class="com.camel.first.route.CaseDosRoute" />
-	
-	<!--  <bean id="fromAtoB" class="com.camel.first.bean.FromAtoB" /> -->
+
+	<!-- <bean id="fromAtoB" class="com.camel.first.bean.FromAtoB" /> -->
 
 	<camelContext xmlns="http://camel.apache.org/schema/spring">
 		<routeBuilder ref="firstRoute" />
@@ -23,8 +23,17 @@
 
 	<!-- Este WS es un producer endpoint (o sea, para usar en un 'to') -->
 	<cxf:cxfEndpoint id="avalonEndpoint"
-		address="http://xxxxxxxx.com.ar:7778/avalonWS/AvalonWS"
+		address="http://xxxxx.com.ar:7778/avalonWS/AvalonWS"
 		wsdlURL="src/main/resources/META-INF/AvalonWS.wsdl">
+		<cxf:properties>
+			<entry key="dataFormat" value="PAYLOAD" />
+		</cxf:properties>
+	</cxf:cxfEndpoint>
+
+	<!-- Este WS es un consumer endpoint (o sea, para usar en un 'from') -->
+	<cxf:cxfEndpoint id="soapMessageEndpoint"
+		address="http://localhost:9000/init"
+		wsdlURL="src/main/resources/META-INF/init.wsdl">
 		<cxf:properties>
 			<entry key="dataFormat" value="PAYLOAD" />
 		</cxf:properties>

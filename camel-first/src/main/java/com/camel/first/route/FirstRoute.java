@@ -4,33 +4,103 @@ import org.apache.camel.Exchange;
 import org.apache.camel.LoggingLevel;
 import org.apache.camel.Processor;
 import org.apache.camel.builder.RouteBuilder;
+import org.apache.camel.component.cxf.common.message.CxfConstants;
 
 public class FirstRoute extends RouteBuilder {
 
 	public void configure() throws Exception {
 
 		// inicio route, entrada por archivo
-		from("file:src/main/resources/msg?noop=true")
+		// from("file:src/main/resources/msg2?noop=true")
+		// log del filename y body
+		// .log(LoggingLevel.INFO,
+		// "Leyendo el archivo ${file:name} \n ${body}")
+
+		/**
+		 * Punto de entrada del route.
+		 * 
+		 * Es un web service "consumer" que se expone, realiza todas las
+		 * operaciones del route, y responde
+		 */
+		from("cxf:bean:soapMessageEndpoint?dataFormat=PAYLOAD")
 				.id("FirstRoute")
 
-				// log del filename y body
-				.log(LoggingLevel.INFO,
-						"Leyendo el archivo ${file:name} \n ${body}")
+				/**
+				 * Log del in.body
+				 * 
+				 * En este caso será el payload del request al web service, o
+				 * sea el body del mensaje SOAP
+				 */
+				.log(LoggingLevel.INFO, "ws request: \n ${body}")
 
-				// llamada al WebService CXF
-				.setHeader("operationName", constant("obtenerContratoCuenta"))
+				/**
+				 * Log del exchange
+				 * 
+				 * Podemos ver los header, y tambien el history de las
+				 * diferentes etapas
+				 */
+				.to("log:com.camel.first.route?showAll=true&multiline=true")
+
+				/**
+				 * Transformacion con XSL
+				 * 
+				 * Transformo el in.body:
+				 * 
+				 * En este punto tengo en el in.body el payload del request de
+				 * la llamada al WS "consumer".
+				 * 
+				 * Y para hacer la llamada al WS de Avalon, necesito en el
+				 * in.body el payload del mensaje de request para Avalon.
+				 * 
+				 * Atencion:
+				 * 
+				 * Si la llamada la hago con CXF -> necesito setear en el header
+				 * la propiedad "operationName", y en el in.body no se debe
+				 * poner el tag root <obtenerContratoCuenta>. Y tener en cunta
+				 * que en la configuracion del endpoint en el camel-context.xml
+				 * debe estar el atributo wsdlURL.
+				 * 
+				 * Si la llamada la hago con spring-ws -> necesito que en el
+				 * body se encuentre el tag root <obtenerContratoCuenta>
+				 */
+				.to("xslt:com/camel/templates/fromRequestCamelFirstToRequestAvalon.xsl")
+
+				/**
+				 * Atencion:
+				 * "When the WS endpoint parses an incoming operation invocation in PAYLOAD mode, it automatically sets the operationName header to the name of the invoked operation."
+				 * y tambien setea el operationNamespace.
+				 * 
+				 * Entonces lo borro del header, asi puedo llamar a otro WS con
+				 * otro namespace.
+				 */
+				.removeHeader(CxfConstants.OPERATION_NAMESPACE)
+
+				// .setHeader(
+				// CxfConstants.OPERATION_NAMESPACE,
+				// constant("http://ar/com/nextel/avalon/facade/AvalonWS.wsdl"))
+
+				/**
+				 * Llamada al Web Service de Avalon con CXF.
+				 * 
+				 * seteamos la operationName
+				 */
+				.setHeader(CxfConstants.OPERATION_NAME,
+						constant("obtenerContratoCuenta"))
+
+				/**
+				 * Esta es una llamada "producer", es un cliente.
+				 * 
+				 * Llamamos al WS de Avalon
+				 */
 				.to("cxf:bean:avalonEndpoint").id("avalonWS")
-				// con esta forma el in.body es solo
-				// <customerCode>2.11</customerCode>
-				// ojo, esta forma de llamada necesita el
-				// wsdlURL="src/main/resources/META-INF/AvalonWS.wsdl"
 
-				// la misma llamada se puede hacer con
-				// .to("cxf:bean:avalonEndpoint").id("avalonWS")
-				// y poniendo en el in.body el
-				// <obtenerContratoCuenta>...</obtenerContratoCuenta>
+				// .to("spring-ws:http://xxxxx.com.ar:7778/avalonWS/AvalonWS")
 
-				// process ejemplo
+				/**
+				 * Ejemplo de cómo llamar a un process en el medio
+				 * 
+				 * Se puede debugear y ver el contenido del exchange
+				 */
 				.process(new Processor() {
 					public void process(Exchange exchange) throws Exception {
 						exchange.getIn().setHeader("NesTest", "lala");
@@ -38,10 +108,17 @@ public class FirstRoute extends RouteBuilder {
 
 				})
 
-				// log del body
+				/**
+				 * Log del in.body
+				 */
 				.log(LoggingLevel.INFO, "${body}")
 
-				// fin de este pedazo de workflow
+				/**
+				 * Fin de este pedazo de workflow
+				 * 
+				 * Con el componente "direct" podemos terminar, y seguir en otra
+				 * clase java
+				 */
 				.to("direct:endFirstRoute");
 	}
 }

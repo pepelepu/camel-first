@@ -20,10 +20,10 @@ public class CaseUnoRoute extends RouteBuilder {
 				// .to("bean:fromAtoB")
 				// .beanRef("fromAtoB")
 				.bean(FromAtoB.class) // esta ultima no necesita declarar nada
-										// en el xml
+										// en el camel-context.xml
 
 				// lamada al WS
-				.to("spring-ws:http://xxxxxxxxxxxx.com.ar:7778/avalonWS/AvalonWS")
+				.to("spring-ws:http://xxxxx.com.ar:7778/avalonWS/AvalonWS")
 
 				// log del body
 				.log(LoggingLevel.INFO, "${body}");

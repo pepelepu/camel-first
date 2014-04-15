@@ -8,13 +8,14 @@ public class SecondRoute extends RouteBuilder {
 
 		// inicio route
 		from("direct:endFirstRoute").id("SecondRoute")
+		
 			// log (headers, history)
 			.to("log:com.camel.first.route?showAll=true&multiline=true")
 
 // @formatter:off
 
 			.choice()
-				.when().xpath("//cantActivos")
+				.when().xpath("//cantActivosss")
 					.to("direct:endSecondRouteCase1")
 				.otherwise()
 					.to("direct:endSecondRouteCase2");

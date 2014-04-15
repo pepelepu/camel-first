@@ -2,6 +2,7 @@ package com.camel.first.route;
 
 import org.apache.camel.LoggingLevel;
 import org.apache.camel.builder.RouteBuilder;
+import org.apache.camel.component.cxf.common.message.CxfConstants;
 
 import com.camel.first.bean.WithParamsBean;
 
@@ -14,7 +15,8 @@ public class CaseDosRoute extends RouteBuilder {
 				.id("CaseDosRoute")
 
 				// preparando la llamada al WebService CXF
-				.setHeader("operationName", constant("obtenerContratoCuenta"))
+				.setHeader(CxfConstants.OPERATION_NAME,
+						constant("obtenerContratoCuenta"))
 				.setHeader("customerCode", constant("2.13"))
 				.bean(WithParamsBean.class)
 				// llamada al WS
