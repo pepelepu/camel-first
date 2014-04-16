@@ -1,3 +1,4737 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<wsdl:definitions>
+<wsdl:definitions targetNamespace="http://ar/com/nextel/avalon/facade/AvalonWS.wsdl" xmlns:tns3="http://handler.rpc.xml.javax" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns2="http://context.springframework.org" xmlns:impl="http://ar/com/nextel/avalon/facade/AvalonWS.wsdl" xmlns:intf="http://ar/com/nextel/avalon/facade/AvalonWS.wsdl" xmlns:tns6="http://http.servlet.javax" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tns4="http://servlet.javax" xmlns:tns5="http://security.java" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns1="http://business.nextel.com.ar">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://business.nextel.com.ar">
+   <import namespace="http://ar/com/nextel/avalon/facade/AvalonWS.wsdl"/>
+   <import namespace="http://xml.apache.org/xml-soap"/>
+   <import namespace="http://context.springframework.org"/>
+   <import namespace="http://handler.rpc.xml.javax"/>
+   <import namespace="http://security.java"/>
+   <import namespace="http://servlet.javax"/>
+   <import namespace="http://http.servlet.javax"/>
+   <import namespace="http://schemas.xmlsoap.org/soap/encoding/"/>
+   <complexType name="AgingRemote">
+    <sequence>
+     <element name="avencer" type="xsd:float"/>
+     <element name="hasta29" type="xsd:float"/>
+     <element name="numeroCliente" nillable="true" type="xsd:string"/>
+     <element name="hasta119" type="xsd:float"/>
+     <element name="hasta120" type="xsd:float"/>
+     <element name="hasta59" type="xsd:float"/>
+     <element name="hasta89" type="xsd:float"/>
+     <element name="descripcion" nillable="true" type="xsd:string"/>
+     <element name="noFacturada" type="xsd:float"/>
+    </sequence>
+   </complexType>
+   <complexType name="ContratoCuentaRemote">
+    <sequence>
+     <element name="cantActivos" type="xsd:int"/>
+     <element name="cantNoActivos" type="xsd:int"/>
+     <element name="cantSuspendidos" type="xsd:int"/>
+     <element name="customerCode" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="TipoDeClienteRemote">
+    <sequence>
+     <element name="idTipoCliente" nillable="true" type="xsd:long"/>
+     <element name="idTipoPago" nillable="true" type="xsd:long"/>
+     <element name="numeroCliente" nillable="true" type="xsd:long"/>
+     <element name="tipoCliente" nillable="true" type="xsd:string"/>
+     <element name="tipoPago" nillable="true" type="xsd:string"/>
+     <element name="catCobranzas" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="ContratoRemote">
+    <sequence>
+     <element name="estado" nillable="true" type="xsd:string"/>
+     <element name="id" nillable="true" type="xsd:long"/>
+     <element name="idNextel" nillable="true" type="xsd:string"/>
+     <element name="modelo" nillable="true" type="xsd:string"/>
+     <element name="respPago" nillable="true" type="xsd:string"/>
+     <element name="rsDesc" nillable="true" type="xsd:string"/>
+     <element name="rsId" nillable="true" type="xsd:long"/>
+     <element name="suscriptor" nillable="true" type="xsd:string"/>
+     <element name="telefono" nillable="true" type="xsd:string"/>
+     <element name="transPendiente" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="ContratoTmCodeRemote">
+    <complexContent>
+     <extension base="tns1:ContratoRemote">
+      <sequence>
+       <element name="tmCode" nillable="true" type="xsd:long"/>
+      </sequence>
+     </extension>
+    </complexContent>
+   </complexType>
+   <complexType name="InfoClienteRemote">
+    <sequence>
+     <element name="arpu" type="xsd:float"/>
+     <element name="ciclo" nillable="true" type="xsd:string"/>
+     <element name="claseImpositiva" nillable="true" type="xsd:string"/>
+     <element name="cliente" nillable="true" type="xsd:string"/>
+     <element name="codigoElectronico" nillable="true" type="xsd:string"/>
+     <element name="cuitDocumento" nillable="true" type="xsd:string"/>
+     <element name="direccion" nillable="true" type="xsd:string"/>
+     <element name="ejecutivo" nillable="true" type="xsd:string"/>
+     <element name="estadoEquipos" nillable="true" type="xsd:string"/>
+     <element name="formaPago" nillable="true" type="xsd:string"/>
+     <element name="nombreApellido" nillable="true" type="xsd:string"/>
+     <element name="razonSocial" nillable="true" type="xsd:string"/>
+     <element name="segmento" nillable="true" type="xsd:string"/>
+     <element name="telefonoRed" nillable="true" type="xsd:string"/>
+     <element name="tipoCliente" nillable="true" type="xsd:string"/>
+     <element name="telefonoFax" nillable="true" type="xsd:string"/>
+     <element name="ingresoAlSistema" nillable="true" type="xsd:dateTime"/>
+     <element name="tipoDocumento" nillable="true" type="xsd:string"/>
+     <element name="limiteDeCredito" type="xsd:float"/>
+     <element name="email" nillable="true" type="xsd:string"/>
+     <element name="localidad" nillable="true" type="xsd:string"/>
+     <element name="clienteRP" nillable="true" type="xsd:string"/>
+     <element name="flota" nillable="true" type="xsd:string"/>
+     <element name="rangoCiclo" nillable="true" type="xsd:string"/>
+     <element name="cantidadSuscriptores" type="xsd:int"/>
+    </sequence>
+   </complexType>
+   <complexType name="InfoCargosCreditosRemote">
+    <sequence>
+     <element name="concepto" nillable="true" type="xsd:string"/>
+     <element name="fechaIng" nillable="true" type="xsd:dateTime"/>
+     <element name="fechaValidez" nillable="true" type="xsd:dateTime"/>
+     <element name="monto" type="xsd:float"/>
+     <element name="usuario" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="TransaccionCCRemote">
+    <sequence>
+     <element name="clase" nillable="true" type="xsd:string"/>
+     <element name="descripcion" nillable="true" type="xsd:string"/>
+     <element name="fechaDoc" nillable="true" type="xsd:dateTime"/>
+     <element name="fechaVenc" nillable="true" type="xsd:dateTime"/>
+     <element name="importe" type="xsd:float"/>
+     <element name="numero" nillable="true" type="xsd:string"/>
+     <element name="saldo" type="xsd:float"/>
+     <element name="tipo" nillable="true" type="xsd:string"/>
+     <element name="xact" nillable="true" type="xsd:long"/>
+    </sequence>
+   </complexType>
+   <complexType name="ContratoInfoRemote">
+    <sequence>
+     <element name="customerCode" nillable="true" type="xsd:string"/>
+     <element name="id" nillable="true" type="xsd:long"/>
+     <element name="imeiSim" nillable="true" type="xsd:string"/>
+     <element name="razonSocial" nillable="true" type="xsd:string"/>
+     <element name="telefono" nillable="true" type="xsd:string"/>
+     <element name="telefonoId" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="EstadoContratoRemote">
+    <sequence>
+     <element name="estado" nillable="true" type="xsd:string"/>
+     <element name="idContrato" nillable="true" type="xsd:string"/>
+     <element name="idRadio" nillable="true" type="xsd:string"/>
+     <element name="modalidadContratacion" nillable="true" type="xsd:string"/>
+     <element name="modelo" nillable="true" type="xsd:string"/>
+     <element name="pestado" nillable="true" type="xsd:string"/>
+     <element name="pmsnj" nillable="true" type="xsd:string"/>
+     <element name="rp" nillable="true" type="xsd:string"/>
+     <element name="sim" nillable="true" type="xsd:string"/>
+     <element name="telefono" nillable="true" type="xsd:string"/>
+     <element name="tmCode" nillable="true" type="xsd:int"/>
+    </sequence>
+   </complexType>
+   <complexType name="ModeloImportadoAvalonRemote">
+    <sequence>
+     <element name="descripcion" nillable="true" type="xsd:string"/>
+     <element name="id" nillable="true" type="xsd:long"/>
+    </sequence>
+   </complexType>
+   <complexType name="PropietarioAnteriorDelEquipoRemote">
+    <sequence>
+     <element name="fechaDesactivacion" nillable="true" type="xsd:dateTime"/>
+     <element name="idCliente" nillable="true" type="xsd:long"/>
+     <element name="idModelo" nillable="true" type="xsd:string"/>
+     <element name="imei" nillable="true" type="xsd:string"/>
+     <element name="modelo" nillable="true" type="xsd:string"/>
+     <element name="nroContrato" nillable="true" type="xsd:string"/>
+     <element name="nroSerie" nillable="true" type="xsd:string"/>
+     <element name="razonSocial" nillable="true" type="xsd:string"/>
+     <element name="suscriptor" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="DatosClienteSiniestrosConGarantiaRemote">
+    <sequence>
+     <element name="direccion" nillable="true" type="xsd:string"/>
+     <element name="localidad" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="MotivoCategoriaSubcategoriaRemote">
+    <sequence>
+     <element name="descripcion" nillable="true" type="xsd:string"/>
+     <element name="estado" nillable="true" type="xsd:string"/>
+     <element name="id" type="xsd:long"/>
+    </sequence>
+   </complexType>
+   <complexType name="InfoTelefonoRemote">
+    <sequence>
+     <element name="contrato" nillable="true" type="xsd:long"/>
+     <element name="cuenta" nillable="true" type="xsd:string"/>
+     <element name="estado" nillable="true" type="xsd:string"/>
+     <element name="modelo" nillable="true" type="xsd:string"/>
+     <element name="plan" nillable="true" type="xsd:string"/>
+     <element name="precio_abono" nillable="true" type="xsd:long"/>
+     <element name="telefono" nillable="true" type="xsd:string"/>
+     <element name="tipo_plan" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="InfoTelefonoConFlotaRemote">
+    <sequence>
+     <element name="contrato" nillable="true" type="xsd:long"/>
+     <element name="cuenta" nillable="true" type="xsd:string"/>
+     <element name="estado" nillable="true" type="xsd:string"/>
+     <element name="modelo" nillable="true" type="xsd:string"/>
+     <element name="plan" nillable="true" type="xsd:string"/>
+     <element name="precio_abono" nillable="true" type="xsd:long"/>
+     <element name="telefono" nillable="true" type="xsd:string"/>
+     <element name="tipo_plan" nillable="true" type="xsd:string"/>
+     <element name="flota" nillable="true" type="xsd:string"/>
+     <element name="id" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="EstadoCuentaRemote">
+    <sequence>
+     <element name="activos" type="xsd:int"/>
+     <element name="aging" type="xsd:double"/>
+     <element name="area" nillable="true" type="xsd:string"/>
+     <element name="customerCode" nillable="true" type="xsd:string"/>
+     <element name="desactivados" type="xsd:int"/>
+     <element name="deudaInicio" type="xsd:double"/>
+     <element name="suspendidos" type="xsd:int"/>
+     <element name="customerId" type="xsd:long"/>
+     <element name="suspendidosParciales" type="xsd:int"/>
+    </sequence>
+   </complexType>
+   <complexType name="InfoContratoRPRemote">
+    <sequence>
+     <element name="contrato" nillable="true" type="xsd:long"/>
+     <element name="rp" nillable="true" type="xsd:string"/>
+     <element name="idNextel" nillable="true" type="xsd:string"/>
+     <element name="modelo" nillable="true" type="xsd:string"/>
+     <element name="telefono" nillable="true" type="xsd:string"/>
+     <element name="suscriptor" nillable="true" type="xsd:string"/>
+     <element name="tmCode" nillable="true" type="xsd:long"/>
+    </sequence>
+   </complexType>
+   <complexType name="InfoClienteMailMoraRemote">
+    <sequence>
+     <element name="codigoElectronico" nillable="true" type="xsd:string"/>
+     <element name="controlGroup" nillable="true" type="xsd:string"/>
+     <element name="customerCode" nillable="true" type="xsd:string"/>
+     <element name="email" nillable="true" type="xsd:string"/>
+     <element name="hdrDocType" nillable="true" type="xsd:string"/>
+     <element name="hdrDueDate" nillable="true" type="xsd:string"/>
+     <element name="hdrId" nillable="true" type="xsd:string"/>
+     <element name="hdrInvoiceD" nillable="true" type="xsd:string"/>
+     <element name="hdrInvoiceDFormated" nillable="true" type="xsd:string"/>
+     <element name="hdrInvoiceNum" nillable="true" type="xsd:string"/>
+     <element name="hdrInvoiceType" nillable="true" type="xsd:string"/>
+     <element name="hdrTotalAmt" nillable="true" type="xsd:string"/>
+     <element name="razonSocial" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="InfoFacturaRemote">
+    <sequence>
+     <element name="fechaVtoUltimaFact" type="xsd:dateTime"/>
+     <element name="fechaEmisionFact" nillable="true" type="xsd:dateTime"/>
+     <element name="importeFactura" nillable="true" type="xsd:double"/>
+     <element name="codElectronico" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="AvalonDataAP">
+    <sequence>
+     <element name="activos" type="xsd:int"/>
+     <element name="cantSuspTelecob" type="xsd:int"/>
+     <element name="cantDesactivados" type="xsd:int"/>
+     <element name="cantTotal" type="xsd:int"/>
+    </sequence>
+   </complexType>
+  </schema>
+  <schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://ar/com/nextel/avalon/facade/AvalonWS.wsdl">
+   <import namespace="http://xml.apache.org/xml-soap"/>
+   <import namespace="http://business.nextel.com.ar"/>
+   <import namespace="http://context.springframework.org"/>
+   <import namespace="http://handler.rpc.xml.javax"/>
+   <import namespace="http://security.java"/>
+   <import namespace="http://servlet.javax"/>
+   <import namespace="http://http.servlet.javax"/>
+   <import namespace="http://schemas.xmlsoap.org/soap/encoding/"/>
+   <complexType name="ArrayOf_tns1_AgingRemote">
+    <complexContent>
+     <restriction base="soapenc:Array">
+      <attribute ref="soapenc:arrayType" wsdl:arrayType="tns1:AgingRemote[]"/>
+     </restriction>
+    </complexContent>
+   </complexType>
+   <complexType name="ArrayOf_tns1_ContratoRemote">
+    <complexContent>
+     <restriction base="soapenc:Array">
+      <attribute ref="soapenc:arrayType" wsdl:arrayType="tns1:ContratoRemote[]"/>
+     </restriction>
+    </complexContent>
+   </complexType>
+   <complexType name="ArrayOf_tns1_ContratoTmCodeRemote">
+    <complexContent>
+     <restriction base="soapenc:Array">
+      <attribute ref="soapenc:arrayType" wsdl:arrayType="tns1:ContratoTmCodeRemote[]"/>
+     </restriction>
+    </complexContent>
+   </complexType>
+   <complexType name="ArrayOf_tns1_InfoCargosCreditosRemote">
+    <complexContent>
+     <restriction base="soapenc:Array">
+      <attribute ref="soapenc:arrayType" wsdl:arrayType="tns1:InfoCargosCreditosRemote[]"/>
+     </restriction>
+    </complexContent>
+   </complexType>
+   <complexType name="ArrayOf_tns1_TransaccionCCRemote">
+    <complexContent>
+     <restriction base="soapenc:Array">
+      <attribute ref="soapenc:arrayType" wsdl:arrayType="tns1:TransaccionCCRemote[]"/>
+     </restriction>
+    </complexContent>
+   </complexType>
+   <complexType name="ArrayOf_xsd_int">
+    <complexContent>
+     <restriction base="soapenc:Array">
+      <attribute ref="soapenc:arrayType" wsdl:arrayType="xsd:int[]"/>
+     </restriction>
+    </complexContent>
+   </complexType>
+   <complexType name="ArrayOf_tns1_ModeloImportadoAvalonRemote">
+    <complexContent>
+     <restriction base="soapenc:Array">
+      <attribute ref="soapenc:arrayType" wsdl:arrayType="tns1:ModeloImportadoAvalonRemote[]"/>
+     </restriction>
+    </complexContent>
+   </complexType>
+   <complexType name="ArrayOf_tns1_DatosClienteSiniestrosConGarantiaRemote">
+    <complexContent>
+     <restriction base="soapenc:Array">
+      <attribute ref="soapenc:arrayType" wsdl:arrayType="tns1:DatosClienteSiniestrosConGarantiaRemote[]"/>
+     </restriction>
+    </complexContent>
+   </complexType>
+   <complexType name="ArrayOf_xsd_string">
+    <complexContent>
+     <restriction base="soapenc:Array">
+      <attribute ref="soapenc:arrayType" wsdl:arrayType="xsd:string[]"/>
+     </restriction>
+    </complexContent>
+   </complexType>
+   <complexType name="ArrayOf_xsd_dateTime">
+    <complexContent>
+     <restriction base="soapenc:Array">
+      <attribute ref="soapenc:arrayType" wsdl:arrayType="xsd:dateTime[]"/>
+     </restriction>
+    </complexContent>
+   </complexType>
+   <complexType name="ArrayOf_xsd_anyType">
+    <complexContent>
+     <restriction base="soapenc:Array">
+      <attribute ref="soapenc:arrayType" wsdl:arrayType="xsd:anyType[]"/>
+     </restriction>
+    </complexContent>
+   </complexType>
+   <complexType name="ArrayOf_tns1_MotivoCategoriaSubcategoriaRemote">
+    <complexContent>
+     <restriction base="soapenc:Array">
+      <attribute ref="soapenc:arrayType" wsdl:arrayType="tns1:MotivoCategoriaSubcategoriaRemote[]"/>
+     </restriction>
+    </complexContent>
+   </complexType>
+   <complexType name="ArrayOf_tns1_InfoTelefonoRemote">
+    <complexContent>
+     <restriction base="soapenc:Array">
+      <attribute ref="soapenc:arrayType" wsdl:arrayType="tns1:InfoTelefonoRemote[]"/>
+     </restriction>
+    </complexContent>
+   </complexType>
+   <complexType name="ArrayOf_tns1_InfoTelefonoConFlotaRemote">
+    <complexContent>
+     <restriction base="soapenc:Array">
+      <attribute ref="soapenc:arrayType" wsdl:arrayType="tns1:InfoTelefonoConFlotaRemote[]"/>
+     </restriction>
+    </complexContent>
+   </complexType>
+   <complexType name="ArrayOf_tns1_EstadoCuentaRemote">
+    <complexContent>
+     <restriction base="soapenc:Array">
+      <attribute ref="soapenc:arrayType" wsdl:arrayType="tns1:EstadoCuentaRemote[]"/>
+     </restriction>
+    </complexContent>
+   </complexType>
+   <complexType name="ArrayOf_tns1_InfoContratoRPRemote">
+    <complexContent>
+     <restriction base="soapenc:Array">
+      <attribute ref="soapenc:arrayType" wsdl:arrayType="tns1:InfoContratoRPRemote[]"/>
+     </restriction>
+    </complexContent>
+   </complexType>
+   <complexType name="ArrayOf_tns1_InfoClienteMailMoraRemote">
+    <complexContent>
+     <restriction base="soapenc:Array">
+      <attribute ref="soapenc:arrayType" wsdl:arrayType="tns1:InfoClienteMailMoraRemote[]"/>
+     </restriction>
+    </complexContent>
+   </complexType>
+  </schema>
+  <schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://xml.apache.org/xml-soap">
+   <import namespace="http://ar/com/nextel/avalon/facade/AvalonWS.wsdl"/>
+   <import namespace="http://business.nextel.com.ar"/>
+   <import namespace="http://context.springframework.org"/>
+   <import namespace="http://handler.rpc.xml.javax"/>
+   <import namespace="http://security.java"/>
+   <import namespace="http://servlet.javax"/>
+   <import namespace="http://http.servlet.javax"/>
+   <import namespace="http://schemas.xmlsoap.org/soap/encoding/"/>
+   <complexType name="Vector">
+    <sequence>
+     <element name="item" minOccurs="0" maxOccurs="unbounded" type="xsd:anyType"/>
+    </sequence>
+   </complexType>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="buscarModeloByIdContratoResponse">
+
+      <wsdl:part name="buscarModeloByIdContratoReturn" type="tns1:PropietarioAnteriorDelEquipoRemote"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="existeHandsetEnAvalonResponse">
+
+      <wsdl:part name="existeHandsetEnAvalonReturn" type="xsd:boolean"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="igualIHLRFlotasResponse">
+
+      <wsdl:part name="igualIHLRFlotasReturn" type="xsd:boolean"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="obtenerDiasFeriadosRequest">
+
+   </wsdl:message>
+
+   <wsdl:message name="buscarNumeroSerieHandsetRequest">
+
+      <wsdl:part name="imei" type="xsd:string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getDireccionLocalidadClienteResponse">
+
+      <wsdl:part name="getDireccionLocalidadClienteReturn" type="impl:ArrayOf_tns1_DatosClienteSiniestrosConGarantiaRemote"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="isGranCuentaResponse">
+
+      <wsdl:part name="isGranCuentaReturn" type="xsd:boolean"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="obtenerContratosActivosRPRequest">
+
+      <wsdl:part name="customerCodeGranCuenta" type="xsd:string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="sumarContratosByCustomerCodeRequest">
+
+      <wsdl:part name="customerCode" type="xsd:string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getMontoAUVGtiaResponse">
+
+      <wsdl:part name="getMontoAUVGtiaReturn" type="xsd:float"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="tieneTransaccionesPendientesRequest">
+
+      <wsdl:part name="idContrato" type="xsd:long"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="obtenerContratosReactivarAutomaticamenteRequest">
+
+      <wsdl:part name="customerCode" type="xsd:string"/>
+
+      <wsdl:part name="motivosSuspensionTelecobranzas" type="xsd:string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="isUserInRoleRequest">
+
+      <wsdl:part name="role" type="xsd:string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="obtenerColorSegmentacionRequest">
+
+      <wsdl:part name="customerCode" type="xsd:string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="desactivarServicioResponse">
+
+      <wsdl:part name="desactivarServicioReturn" type="xsd:boolean"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="obtenerRPAsociadoAlClienteRequest">
+
+      <wsdl:part name="customerId" type="xsd:long"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getMontoFacturasVencidasResponse">
+
+      <wsdl:part name="getMontoFacturasVencidasReturn" type="xsd:double"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="sumarContratosByCustomerCodeResponse">
+
+      <wsdl:part name="sumarContratosByCustomerCodeReturn" type="tns1:ContratoCuentaRemote"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getServletContextRequest">
+
+   </wsdl:message>
+
+   <wsdl:message name="ObtenerTelefonosActivosSuspendidosRequest">
+
+      <wsdl:part name="customerCode" type="xsd:string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="validarTelefonoEnvioSMSRequest">
+
+      <wsdl:part name="telefono" type="xsd:string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getServletContextResponse">
+
+      <wsdl:part name="getServletContextReturn" type="xsd:anyType"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getHandsetAsociadoConSIMResponse">
+
+      <wsdl:part name="getHandsetAsociadoConSIMReturn" type="xsd:string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="cantidadReemplazosSTConTakeOverRequest">
+
+      <wsdl:part name="contratoId" type="xsd:long"/>
+
+      <wsdl:part name="fecha" type="xsd:dateTime"/>
+
+      <wsdl:part name="reasonsId" type="impl:ArrayOf_xsd_int"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="obtenerAgingConsolidadoRequest">
+
+      <wsdl:part name="custCodeGC" type="xsd:string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="obtenerCuentasRPActivasResponse">
+
+      <wsdl:part name="obtenerCuentasRPActivasReturn" type="impl:ArrayOf_xsd_string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="obtenerLimiteDeCompraResponse">
+
+      <wsdl:part name="obtenerLimiteDeCompraReturn" type="xsd:float"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="obtenerTelefonoPlanMasCaroResponse">
+
+      <wsdl:part name="obtenerTelefonoPlanMasCaroReturn" type="xsd:string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="obtenerTipoClienteRequest">
+
+      <wsdl:part name="customerId" type="xsd:long"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="obtenerTelefonosActivosRequest">
+
+      <wsdl:part name="customerId" type="xsd:long"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="obtenerAgingByClientRequest">
+
+      <wsdl:part name="custCode" type="xsd:string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="obtenerFlotaPorContratoResponse">
+
+      <wsdl:part name="obtenerFlotaPorContratoReturn" type="xsd:int"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="buscarImeiEnBillingRequest">
+
+      <wsdl:part name="imei" type="xsd:string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="obtenerGranCuentaRequest">
+
+      <wsdl:part name="cliente" type="xsd:long"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="buscarNumeroSerieSIMResponse">
+
+      <wsdl:part name="buscarNumeroSerieSIMReturn" type="xsd:string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="cantidadSuscriptoresResponsablesDePagoRequest">
+
+      <wsdl:part name="customerCode" type="xsd:string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="obtenerContratosRequest">
+
+      <wsdl:part name="estado" type="xsd:string"/>
+
+      <wsdl:part name="customerCode" type="xsd:string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="obtenerFechaUltimoRechazoRequest">
+
+      <wsdl:part name="customerCode" type="xsd:string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="ejecutarSuspensionParcialContratoRequest">
+
+      <wsdl:part name="idContrato" type="xsd:long"/>
+
+      <wsdl:part name="usuario" type="xsd:string"/>
+
+      <wsdl:part name="idRs" type="xsd:int"/>
+
+      <wsdl:part name="idGestionVantive" type="xsd:long"/>
+
+      <wsdl:part name="fechaSuspencionTotal" type="xsd:dateTime"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="obtenerAgingConsolidadoResponse">
+
+      <wsdl:part name="obtenerAgingConsolidadoReturn" type="impl:ArrayOf_tns1_AgingRemote"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="obtenerGrupoAsigDeudorResponse">
+
+      <wsdl:part name="obtenerGrupoAsigDeudorReturn" type="xsd:string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="tieneHistorialReemplazosRequest">
+
+      <wsdl:part name="contrato" type="xsd:long"/>
+
+      <wsdl:part name="imei" type="xsd:string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="obtenerDiasDeudaResponse">
+
+      <wsdl:part name="obtenerDiasDeudaReturn" type="xsd:int"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="obtenerFechaUltimoRechazoResponse">
+
+      <wsdl:part name="obtenerFechaUltimoRechazoReturn" type="xsd:dateTime"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="tieneTransaccionesPendientesResponse">
+
+      <wsdl:part name="tieneTransaccionesPendientesReturn" type="xsd:boolean"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="validarSuscriptorRequest">
+
+      <wsdl:part name="customerId" type="xsd:long"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="obtenerCustomerIdPorCustomerCodeRequest">
+
+      <wsdl:part name="suscriptor" type="xsd:string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="obtenerCuentasRPActivasRequest">
+
+      <wsdl:part name="customerCode" type="xsd:string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="obtenerSucursalRequest">
+
+      <wsdl:part name="customerId" type="xsd:long"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="obtenerAntiguedadResponse">
+
+      <wsdl:part name="obtenerAntiguedadReturn" type="xsd:int"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getSIMsAsociadasConHandsetResponse">
+
+      <wsdl:part name="getSIMsAsociadasConHandsetReturn" type="impl:ArrayOf_xsd_anyType"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="isVIPContractRequest">
+
+      <wsdl:part name="customerCodeRP" type="xsd:string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getUserPrincipalRequest">
+
+   </wsdl:message>
+
+   <wsdl:message name="obtenerCustomerBigAccountRequest">
+
+      <wsdl:part name="customerId" type="xsd:long"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getHttpSessionResponse">
+
+      <wsdl:part name="getHttpSessionReturn" type="xsd:anyType"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getMisAlertasRequest">
+
+      <wsdl:part name="numClient" type="xsd:string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getContextRequest">
+
+   </wsdl:message>
+
+   <wsdl:message name="obtenerContratosActivosRequest">
+
+      <wsdl:part name="customerCode" type="xsd:string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="cantidadReemplazosSTRequest">
+
+      <wsdl:part name="contratoId" type="xsd:long"/>
+
+      <wsdl:part name="fecha" type="xsd:dateTime"/>
+
+      <wsdl:part name="reasonsId" type="impl:ArrayOf_xsd_int"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="ObtenerTelefonosActivosSuspendidosConFlotaRequest">
+
+      <wsdl:part name="customerCode" type="xsd:string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="cantidadReemplazosSIConTakeOverRequest">
+
+      <wsdl:part name="contratoId" type="xsd:long"/>
+
+      <wsdl:part name="fecha" type="xsd:dateTime"/>
+
+      <wsdl:part name="reasonsId" type="impl:ArrayOf_xsd_int"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="cantidadReemplazosTakeOverResponse">
+
+      <wsdl:part name="cantidadReemplazosTakeOverReturn" type="xsd:int"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="obtenerMotivosCategoriaSubcategoriaReactivarResponse">
+
+      <wsdl:part name="obtenerMotivosCategoriaSubcategoriaReactivarReturn" type="impl:ArrayOf_tns1_MotivoCategoriaSubcategoriaRemote"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="ejecutarReactivacionContratoResponse">
+
+   </wsdl:message>
+
+   <wsdl:message name="getSIMsAsociadasConHandsetRequest">
+
+      <wsdl:part name="handset" type="xsd:string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="rechazarTarjetaDeCreditoResponse">
+
+      <wsdl:part name="rechazarTarjetaDeCreditoReturn" type="xsd:boolean"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getMessageContextRequest">
+
+   </wsdl:message>
+
+   <wsdl:message name="obtenerLimiteDeCompraRequest">
+
+      <wsdl:part name="custCode" type="xsd:string"/>
+
+      <wsdl:part name="limiteCompraContrato" type="xsd:float"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="obtenerDatosClienteResponse">
+
+      <wsdl:part name="obtenerDatosClienteReturn" type="impl:ArrayOf_xsd_string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getDescripcionServicioResponse">
+
+      <wsdl:part name="getDescripcionServicioReturn" type="xsd:string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="buscarModeloByIdContratoRequest">
+
+      <wsdl:part name="idContrato" type="xsd:long"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="obtenerContratosConTmCodeResponse">
+
+      <wsdl:part name="obtenerContratosConTmCodeReturn" type="impl:ArrayOf_tns1_ContratoTmCodeRemote"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="cantidadFacturasUltimosSeisMesesResponse">
+
+      <wsdl:part name="cantidadFacturasUltimosSeisMesesReturn" type="xsd:int"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="estadoServicioContratoRequest">
+
+      <wsdl:part name="contrato" type="xsd:long"/>
+
+      <wsdl:part name="sncode" type="xsd:long"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="existeHandsetEnAvalonRequest">
+
+      <wsdl:part name="imeiHandset" type="xsd:string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="cantidadReemplazosSIRequest">
+
+      <wsdl:part name="contratoId" type="xsd:long"/>
+
+      <wsdl:part name="fecha" type="xsd:dateTime"/>
+
+      <wsdl:part name="reasonsId" type="impl:ArrayOf_xsd_int"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="obtenerTelefonosActivosResponse">
+
+      <wsdl:part name="obtenerTelefonosActivosReturn" type="impl:ArrayOf_xsd_string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="ejecutarSuspensionContratoResponse">
+
+   </wsdl:message>
+
+   <wsdl:message name="obtenerSucursalResponse">
+
+      <wsdl:part name="obtenerSucursalReturn" type="xsd:string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="obtenerCantMesesUltimoRechazoResponse">
+
+      <wsdl:part name="obtenerCantMesesUltimoRechazoReturn" type="xsd:int"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="obtenerDatosContratoResponse">
+
+      <wsdl:part name="obtenerDatosContratoReturn" type="tns1:ContratoInfoRemote"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="obtenerSuscriptoresPorGranCuentaResponse">
+
+      <wsdl:part name="obtenerSuscriptoresPorGranCuentaReturn" type="impl:ArrayOf_xsd_string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="obtenerMotivosCategoriaSubcategoriaSuspenderResponse">
+
+      <wsdl:part name="obtenerMotivosCategoriaSubcategoriaSuspenderReturn" type="impl:ArrayOf_tns1_MotivoCategoriaSubcategoriaRemote"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getModelosImportadosResponse">
+
+      <wsdl:part name="getModelosImportadosReturn" type="impl:ArrayOf_tns1_ModeloImportadoAvalonRemote"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="obtenerClienteResponse">
+
+      <wsdl:part name="obtenerClienteReturn" type="tns1:InfoClienteRemote"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getMsgNegativeFileRequest">
+
+      <wsdl:part name="imei" type="xsd:string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getModelosImportadosRequest">
+
+   </wsdl:message>
+
+   <wsdl:message name="obtenerSuscriptoresPorGranCuentaRequest">
+
+      <wsdl:part name="grancuenta" type="xsd:string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="cantidadReemplazosSTResponse">
+
+      <wsdl:part name="cantidadReemplazosSTReturn" type="xsd:int"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="obtenerMotivosCategoriaSubcategoriaSuspenderRequest">
+
+   </wsdl:message>
+
+   <wsdl:message name="tieneServicioResponse">
+
+      <wsdl:part name="tieneServicioReturn" type="xsd:boolean"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="obtenerContratoCuentaRequest">
+
+      <wsdl:part name="customerCode" type="xsd:string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getContextResponse">
+
+      <wsdl:part name="getContextReturn" type="xsd:anyType"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="crearLinkResponse">
+
+   </wsdl:message>
+
+   <wsdl:message name="obtenerRazonSocialResponse">
+
+      <wsdl:part name="obtenerRazonSocialReturn" type="xsd:string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="ejecutarReactivacionContratoRequest">
+
+      <wsdl:part name="idContrato" type="xsd:long"/>
+
+      <wsdl:part name="usuario" type="xsd:string"/>
+
+      <wsdl:part name="idRs" type="xsd:int"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getUserPrincipalResponse">
+
+      <wsdl:part name="getUserPrincipalReturn" type="xsd:anyType"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="isUserInRoleResponse">
+
+      <wsdl:part name="isUserInRoleReturn" type="xsd:boolean"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="isVIPContractResponse">
+
+      <wsdl:part name="isVIPContractReturn" type="xsd:boolean"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="buscarNroSerieEnBillingResponse">
+
+      <wsdl:part name="buscarNroSerieEnBillingReturn" type="tns1:PropietarioAnteriorDelEquipoRemote"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getEstadoContratoRequest">
+
+      <wsdl:part name="cliente" type="xsd:string"/>
+
+      <wsdl:part name="imei" type="xsd:string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="obtenerMotivosCategoriaSubcategoriaReactivarRequest">
+
+   </wsdl:message>
+
+   <wsdl:message name="obtenerInfoFacturaRequest">
+
+      <wsdl:part name="customerCode" type="xsd:string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="obtenerRPAsociadoAlClienteResponse">
+
+      <wsdl:part name="obtenerRPAsociadoAlClienteReturn" type="xsd:long"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getMsgNegativeFileResponse">
+
+      <wsdl:part name="getMsgNegativeFileReturn" type="xsd:string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="obtenerContratosReactivarAutomaticamenteResponse">
+
+      <wsdl:part name="obtenerContratosReactivarAutomaticamenteReturn" type="impl:ArrayOf_tns1_InfoContratoRPRemote"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getAdheridoFcElectronicaRequest">
+
+      <wsdl:part name="custcode" type="xsd:string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="obtenerRazonSocialRequest">
+
+      <wsdl:part name="numeroCliente" type="xsd:long"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="rechazarTarjetaRequest">
+
+      <wsdl:part name="custcode" type="xsd:string"/>
+
+      <wsdl:part name="nroTarjeta" type="xsd:string"/>
+
+      <wsdl:part name="notaRechazo" type="xsd:string"/>
+
+      <wsdl:part name="aplicacRechaza" type="xsd:string"/>
+
+      <wsdl:part name="loginUsuario" type="xsd:string"/>
+
+      <wsdl:part name="msgErr" type="xsd:string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="obtenerInfoFacturaResponse">
+
+      <wsdl:part name="obtenerInfoFacturaReturn" type="tns1:InfoFacturaRemote"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="estaLinkeadaRequest">
+
+      <wsdl:part name="imei" type="xsd:string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="obtenerDatosMailMoraRequest">
+
+   </wsdl:message>
+
+   <wsdl:message name="estaLinkeadaResponse">
+
+      <wsdl:part name="estaLinkeadaReturn" type="xsd:boolean"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="obtenerFlotaPorContratoRequest">
+
+      <wsdl:part name="idContrato" type="xsd:long"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="obtenerAntiguedadRequest">
+
+      <wsdl:part name="customerCode" type="xsd:string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="isSimDisponibleResponse">
+
+      <wsdl:part name="isSimDisponibleReturn" type="xsd:boolean"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="existeHandsetEnAvalonNoEagleResponse">
+
+      <wsdl:part name="existeHandsetEnAvalonNoEagleReturn" type="xsd:boolean"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getAdheridoFcElectronicaResponse">
+
+      <wsdl:part name="getAdheridoFcElectronicaReturn" type="xsd:int"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="obtenerRazonSocialDomicilioRequest">
+
+      <wsdl:part name="numeroCliente" type="xsd:string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getDireccionLocalidadClienteRequest">
+
+      <wsdl:part name="cliente" type="xsd:long"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="rechazarTarjetaResponse">
+
+      <wsdl:part name="rechazarTarjetaReturn" type="xsd:int"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="obtenerDatosClienteRequest">
+
+      <wsdl:part name="numeroCliente" type="xsd:string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getDescripcionServicioRequest">
+
+      <wsdl:part name="sncode" type="xsd:int"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="ObtenerTelefonosActivosSuspendidosResponse">
+
+      <wsdl:part name="ObtenerTelefonosActivosSuspendidosReturn" type="impl:ArrayOf_tns1_InfoTelefonoRemote"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="obtenerEstadoCuentaCompletoRequest">
+
+      <wsdl:part name="customerCode" type="xsd:string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="obtenerCantMesesUltimoRechazoRequest">
+
+      <wsdl:part name="customerCode" type="xsd:string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="validarTelefonoEnvioSMSResponse">
+
+      <wsdl:part name="validarTelefonoEnvioSMSReturn" type="xsd:boolean"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="obtenerDatosMailMoraResponse">
+
+      <wsdl:part name="obtenerDatosMailMoraReturn" type="impl:ArrayOf_tns1_InfoClienteMailMoraRemote"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="isSuscriptorResponse">
+
+      <wsdl:part name="isSuscriptorReturn" type="xsd:boolean"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="obtenerCargosYCreditosResponse">
+
+      <wsdl:part name="obtenerCargosYCreditosReturn" type="impl:ArrayOf_tns1_InfoCargosCreditosRemote"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="romperLinkResponse">
+
+   </wsdl:message>
+
+   <wsdl:message name="buscarNumeroSerieHandsetResponse">
+
+      <wsdl:part name="buscarNumeroSerieHandsetReturn" type="xsd:string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="tieneDeudaResponse">
+
+      <wsdl:part name="tieneDeudaReturn" type="xsd:boolean"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getMontoFacturasVencidasRequest">
+
+      <wsdl:part name="customerCodeGC" type="xsd:string"/>
+
+      <wsdl:part name="fechaDesde" type="xsd:dateTime"/>
+
+      <wsdl:part name="fechaHasta" type="xsd:dateTime"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="activarServicioRequest">
+
+      <wsdl:part name="contrato" type="xsd:long"/>
+
+      <wsdl:part name="sncode" type="xsd:long"/>
+
+      <wsdl:part name="fechaActivacion" type="xsd:dateTime"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="obtenerSuspTelecobResponse">
+
+      <wsdl:part name="obtenerSuspTelecobReturn" type="tns1:AvalonDataAP"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="ejecutarSuspensionContratoRequest">
+
+      <wsdl:part name="idContrato" type="xsd:long"/>
+
+      <wsdl:part name="usuario" type="xsd:string"/>
+
+      <wsdl:part name="idRs" type="xsd:int"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="obtenerAniNormalizadoRequest">
+
+      <wsdl:part name="ani" type="xsd:string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="isGranCuentaRequest">
+
+      <wsdl:part name="grancuenta" type="xsd:string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="obtenerContratosResponse">
+
+      <wsdl:part name="obtenerContratosReturn" type="impl:ArrayOf_tns1_ContratoRemote"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="obtenerQueryImeiCoIdRequest">
+
+      <wsdl:part name="valor" type="xsd:string"/>
+
+      <wsdl:part name="idContrato" type="xsd:long"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="obtenerRechazosTarjetasRequest">
+
+      <wsdl:part name="customerCode" type="xsd:string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="obtenerAgingByClientResponse">
+
+      <wsdl:part name="obtenerAgingByClientReturn" type="impl:ArrayOf_tns1_AgingRemote"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="obtenerDiasDeudaRequest">
+
+      <wsdl:part name="custcode" type="xsd:string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="buscarNumeroSerieSIMRequest">
+
+      <wsdl:part name="imei" type="xsd:string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="estadoServicioContratoResponse">
+
+      <wsdl:part name="estadoServicioContratoReturn" type="xsd:boolean"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="validarEstadoTelEnvioSMSResponse">
+
+      <wsdl:part name="validarEstadoTelEnvioSMSReturn" type="xsd:boolean"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="cantidadReemplazosSTConTakeOverResponse">
+
+      <wsdl:part name="cantidadReemplazosSTConTakeOverReturn" type="xsd:int"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getMessageContextResponse">
+
+      <wsdl:part name="getMessageContextReturn" type="xsd:anyType"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="obtenerRechazosAvalonResponse">
+
+      <wsdl:part name="obtenerRechazosAvalonReturn" type="impl:ArrayOf_xsd_string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getHttpSessionRequest">
+
+   </wsdl:message>
+
+   <wsdl:message name="isSimDisponibleRequest">
+
+      <wsdl:part name="imeiSIMSalida" type="xsd:string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="obtenerContratosActivosConTmCodeRequest">
+
+      <wsdl:part name="customerCode" type="xsd:string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="obtenerClienteByPhoneResponse">
+
+      <wsdl:part name="obtenerClienteByPhoneReturn" type="xsd:long"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getMisAlertasResponse">
+
+      <wsdl:part name="getMisAlertasReturn" type="impl:ArrayOf_xsd_anyType"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="cantidadFacturasUltimosSeisMesesRequest">
+
+      <wsdl:part name="customerId" type="xsd:long"/>
+
+      <wsdl:part name="fechaSeisMeses" type="xsd:dateTime"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="buscarNroSerieEnBillingRequest">
+
+      <wsdl:part name="nroSerie" type="xsd:string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="obtenerQueryImeiCoIdResponse">
+
+      <wsdl:part name="obtenerQueryImeiCoIdReturn" type="xsd:string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="obtenerFechaHoraResponse">
+
+      <wsdl:part name="obtenerFechaHoraReturn" type="xsd:dateTime"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="obtenerGranCuentaResponse">
+
+      <wsdl:part name="obtenerGranCuentaReturn" type="xsd:string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="obtenerContratosActivosResponse">
+
+      <wsdl:part name="obtenerContratosActivosReturn" type="impl:ArrayOf_tns1_ContratoRemote"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="existeHandsetEnAvalonNoEagleRequest">
+
+      <wsdl:part name="imeiHandset" type="xsd:string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="igualIHLRFlotasRequest">
+
+      <wsdl:part name="flotaOrigen" type="xsd:string"/>
+
+      <wsdl:part name="flotaDestino" type="xsd:string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="updateEmailResponse">
+
+   </wsdl:message>
+
+   <wsdl:message name="obtenerContratoCuentaResponse">
+
+      <wsdl:part name="obtenerContratoCuentaReturn" type="tns1:ContratoCuentaRemote"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="obtenerDiasFeriadosResponse">
+
+      <wsdl:part name="obtenerDiasFeriadosReturn" type="impl:ArrayOf_xsd_dateTime"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="obtenerContratosActivosRPResponse">
+
+      <wsdl:part name="obtenerContratosActivosRPReturn" type="impl:ArrayOf_tns1_InfoContratoRPRemote"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="existeSimEnAvalonRequest">
+
+      <wsdl:part name="imei" type="xsd:string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="obtenerGrupoAsigDeudorRequest">
+
+      <wsdl:part name="customerCode" type="xsd:string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="isEagleRequest">
+
+      <wsdl:part name="imei" type="xsd:string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="obtenerDatosContratoRequest">
+
+      <wsdl:part name="p_contratoId" type="xsd:long"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="obtenerCuentaContratacionResponse">
+
+      <wsdl:part name="obtenerCuentaContratacionReturn" type="xsd:string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="montoFacturasNuevasTelecobranzasRequest">
+
+      <wsdl:part name="customerCode" type="xsd:string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="cantidadReemplazosSIResponse">
+
+      <wsdl:part name="cantidadReemplazosSIReturn" type="xsd:int"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="ejecutarSuspensionParcialContratoResponse">
+
+   </wsdl:message>
+
+   <wsdl:message name="validarEstadoTelEnvioSMSRequest">
+
+      <wsdl:part name="telefono" type="xsd:string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="obtenerCustomerBigAccountResponse">
+
+      <wsdl:part name="obtenerCustomerBigAccountReturn" type="xsd:long"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="cantidadSuscriptoresResponsablesDePagoResponse">
+
+      <wsdl:part name="cantidadSuscriptoresResponsablesDePagoReturn" type="xsd:int"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="obtenerClienteByPhoneRequest">
+
+      <wsdl:part name="telefono" type="xsd:string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="romperLinkRequest">
+
+      <wsdl:part name="imeiHandset" type="xsd:string"/>
+
+      <wsdl:part name="imeiSIM" type="xsd:string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="obtenerColorSegmentacionResponse">
+
+      <wsdl:part name="obtenerColorSegmentacionReturn" type="xsd:string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="tieneServicioRequest">
+
+      <wsdl:part name="idContrato" type="xsd:long"/>
+
+      <wsdl:part name="codigoServicio" type="xsd:long"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="obtenerMsgErrorReactivarAutomaticamenteRequest">
+
+      <wsdl:part name="customerCode" type="xsd:string"/>
+
+      <wsdl:part name="motivosSuspensionTelecobranzas" type="xsd:string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="obtenerContratosConTmCodeRequest">
+
+      <wsdl:part name="estado" type="xsd:string"/>
+
+      <wsdl:part name="customerCode" type="xsd:string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="obtenerContratosActivosConTmCodeResponse">
+
+      <wsdl:part name="obtenerContratosActivosConTmCodeReturn" type="impl:ArrayOf_tns1_ContratoTmCodeRemote"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="crearLinkRequest">
+
+      <wsdl:part name="imeiHandset" type="xsd:string"/>
+
+      <wsdl:part name="imeiSIM" type="xsd:string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="montoFacturasNuevasTelecobranzasResponse">
+
+      <wsdl:part name="montoFacturasNuevasTelecobranzasReturn" type="xsd:double"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="activarServicioResponse">
+
+      <wsdl:part name="activarServicioReturn" type="xsd:boolean"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="cantidadReemplazosSIConTakeOverResponse">
+
+      <wsdl:part name="cantidadReemplazosSIConTakeOverReturn" type="xsd:int"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="obtenerTelefonoPlanMasCaroRequest">
+
+      <wsdl:part name="customerCode" type="xsd:string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="tieneHistorialReemplazosResponse">
+
+      <wsdl:part name="tieneHistorialReemplazosReturn" type="xsd:boolean"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="obtenerTransaccionCCRequest">
+
+      <wsdl:part name="customerId" type="xsd:long"/>
+
+      <wsdl:part name="reversiones" type="xsd:int"/>
+
+      <wsdl:part name="ctaCteCompleta" type="xsd:int"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="cantidadReemplazosSTRequest1">
+
+      <wsdl:part name="contratoId" type="xsd:long"/>
+
+      <wsdl:part name="fecha" type="xsd:dateTime"/>
+
+      <wsdl:part name="reasonsId" type="impl:ArrayOf_xsd_int"/>
+
+      <wsdl:part name="ignore" type="xsd:boolean"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="obtenerCuentaContratacionRequest">
+
+      <wsdl:part name="cuenta" type="xsd:string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="isEagleResponse">
+
+      <wsdl:part name="isEagleReturn" type="xsd:boolean"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="buscarImeiEnBillingResponse">
+
+      <wsdl:part name="buscarImeiEnBillingReturn" type="tns1:PropietarioAnteriorDelEquipoRemote"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="obtenerAniNormalizadoResponse">
+
+      <wsdl:part name="obtenerAniNormalizadoReturn" type="xsd:string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="desactivarServicioRequest">
+
+      <wsdl:part name="contrato" type="xsd:long"/>
+
+      <wsdl:part name="sncode" type="xsd:long"/>
+
+      <wsdl:part name="fechaDesactivacion" type="xsd:dateTime"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="obtenerFechaHoraRequest">
+
+   </wsdl:message>
+
+   <wsdl:message name="getHandsetAsociadoConSIMRequest">
+
+      <wsdl:part name="sim" type="xsd:string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="obtenerClienteRequest">
+
+      <wsdl:part name="customerId" type="xsd:long"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="estaReleaseRequest">
+
+      <wsdl:part name="imei" type="xsd:string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="estaReleaseResponse">
+
+      <wsdl:part name="estaReleaseReturn" type="xsd:boolean"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getEstadoContratoResponse">
+
+      <wsdl:part name="getEstadoContratoReturn" type="tns1:EstadoContratoRemote"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="ObtenerTelefonosActivosSuspendidosConFlotaResponse">
+
+      <wsdl:part name="ObtenerTelefonosActivosSuspendidosConFlotaReturn" type="impl:ArrayOf_tns1_InfoTelefonoConFlotaRemote"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="cantidadReemplazosTakeOverRequest">
+
+      <wsdl:part name="contratoId" type="xsd:long"/>
+
+      <wsdl:part name="fecha" type="xsd:dateTime"/>
+
+      <wsdl:part name="reasonsId" type="impl:ArrayOf_xsd_int"/>
+
+      <wsdl:part name="tipoReemplazo" type="xsd:string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="rechazarTarjetaDeCreditoRequest">
+
+      <wsdl:part name="customerCode" type="xsd:string"/>
+
+      <wsdl:part name="nro_tarjeta" type="xsd:string"/>
+
+      <wsdl:part name="user_login" type="xsd:string"/>
+
+      <wsdl:part name="descripcion" type="xsd:string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="isSuscriptorRequest">
+
+      <wsdl:part name="suscriptor" type="xsd:string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="tieneDeudaRequest">
+
+      <wsdl:part name="customerId" type="xsd:long"/>
+
+      <wsdl:part name="diasDeGracia" type="xsd:int"/>
+
+      <wsdl:part name="porcentajeDeuda" type="xsd:float"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="existeSimEnAvalonResponse">
+
+      <wsdl:part name="existeSimEnAvalonReturn" type="xsd:boolean"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="cantidadReemplazosSTResponse1">
+
+      <wsdl:part name="cantidadReemplazosSTReturn" type="xsd:int"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="obtenerCustomerIdPorCustomerCodeResponse">
+
+      <wsdl:part name="obtenerCustomerIdPorCustomerCodeReturn" type="xsd:int"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="obtenerTransaccionCCResponse">
+
+      <wsdl:part name="obtenerTransaccionCCReturn" type="impl:ArrayOf_tns1_TransaccionCCRemote"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="obtenerRechazosTarjetasResponse">
+
+      <wsdl:part name="obtenerRechazosTarjetasReturn" type="impl:ArrayOf_xsd_string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="obtenerTipoClienteResponse">
+
+      <wsdl:part name="obtenerTipoClienteReturn" type="tns1:TipoDeClienteRemote"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="obtenerCargosYCreditosRequest">
+
+      <wsdl:part name="custCodeGC" type="xsd:string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="obtenerEstadoCuentaCompletoResponse">
+
+      <wsdl:part name="obtenerEstadoCuentaCompletoReturn" type="impl:ArrayOf_tns1_EstadoCuentaRemote"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="obtenerRazonSocialDomicilioResponse">
+
+      <wsdl:part name="obtenerRazonSocialDomicilioReturn" type="impl:ArrayOf_xsd_string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="obtenerSuspTelecobRequest">
+
+      <wsdl:part name="customerCode" type="xsd:string"/>
+
+      <wsdl:part name="motivosSuspensionTelecobranzas" type="xsd:string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="obtenerRechazosAvalonRequest">
+
+      <wsdl:part name="customerCode" type="xsd:string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="updateEmailRequest">
+
+      <wsdl:part name="customerId" type="xsd:long"/>
+
+      <wsdl:part name="email" type="xsd:string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="obtenerMsgErrorReactivarAutomaticamenteResponse">
+
+      <wsdl:part name="obtenerMsgErrorReactivarAutomaticamenteReturn" type="xsd:string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="validarSuscriptorResponse">
+
+      <wsdl:part name="validarSuscriptorReturn" type="xsd:boolean"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getMontoAUVGtiaRequest">
+
+      <wsdl:part name="pTmcode" type="xsd:long"/>
+
+      <wsdl:part name="sncode" type="xsd:long"/>
+
+   </wsdl:message>
+
+   <wsdl:portType name="AvalonWS">
+
+      <wsdl:operation name="obtenerFlotaPorContrato" parameterOrder="idContrato">
+
+         <wsdl:input name="obtenerFlotaPorContratoRequest" message="impl:obtenerFlotaPorContratoRequest"/>
+
+         <wsdl:output name="obtenerFlotaPorContratoResponse" message="impl:obtenerFlotaPorContratoResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="tieneTransaccionesPendientes" parameterOrder="idContrato">
+
+         <wsdl:input name="tieneTransaccionesPendientesRequest" message="impl:tieneTransaccionesPendientesRequest"/>
+
+         <wsdl:output name="tieneTransaccionesPendientesResponse" message="impl:tieneTransaccionesPendientesResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="obtenerClienteByPhone" parameterOrder="telefono">
+
+         <wsdl:input name="obtenerClienteByPhoneRequest" message="impl:obtenerClienteByPhoneRequest"/>
+
+         <wsdl:output name="obtenerClienteByPhoneResponse" message="impl:obtenerClienteByPhoneResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="romperLink" parameterOrder="imeiHandset imeiSIM">
+
+         <wsdl:input name="romperLinkRequest" message="impl:romperLinkRequest"/>
+
+         <wsdl:output name="romperLinkResponse" message="impl:romperLinkResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="crearLink" parameterOrder="imeiHandset imeiSIM">
+
+         <wsdl:input name="crearLinkRequest" message="impl:crearLinkRequest"/>
+
+         <wsdl:output name="crearLinkResponse" message="impl:crearLinkResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="obtenerAgingByClient" parameterOrder="custCode">
+
+         <wsdl:input name="obtenerAgingByClientRequest" message="impl:obtenerAgingByClientRequest"/>
+
+         <wsdl:output name="obtenerAgingByClientResponse" message="impl:obtenerAgingByClientResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="obtenerCustomerBigAccount" parameterOrder="customerId">
+
+         <wsdl:input name="obtenerCustomerBigAccountRequest" message="impl:obtenerCustomerBigAccountRequest"/>
+
+         <wsdl:output name="obtenerCustomerBigAccountResponse" message="impl:obtenerCustomerBigAccountResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="obtenerRPAsociadoAlCliente" parameterOrder="customerId">
+
+         <wsdl:input name="obtenerRPAsociadoAlClienteRequest" message="impl:obtenerRPAsociadoAlClienteRequest"/>
+
+         <wsdl:output name="obtenerRPAsociadoAlClienteResponse" message="impl:obtenerRPAsociadoAlClienteResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="obtenerAgingConsolidado" parameterOrder="custCodeGC">
+
+         <wsdl:input name="obtenerAgingConsolidadoRequest" message="impl:obtenerAgingConsolidadoRequest"/>
+
+         <wsdl:output name="obtenerAgingConsolidadoResponse" message="impl:obtenerAgingConsolidadoResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="obtenerContratoCuenta" parameterOrder="customerCode">
+
+         <wsdl:input name="obtenerContratoCuentaRequest" message="impl:obtenerContratoCuentaRequest"/>
+
+         <wsdl:output name="obtenerContratoCuentaResponse" message="impl:obtenerContratoCuentaResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="obtenerTipoCliente" parameterOrder="customerId">
+
+         <wsdl:input name="obtenerTipoClienteRequest" message="impl:obtenerTipoClienteRequest"/>
+
+         <wsdl:output name="obtenerTipoClienteResponse" message="impl:obtenerTipoClienteResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="obtenerContratos" parameterOrder="estado customerCode">
+
+         <wsdl:input name="obtenerContratosRequest" message="impl:obtenerContratosRequest"/>
+
+         <wsdl:output name="obtenerContratosResponse" message="impl:obtenerContratosResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="obtenerContratosConTmCode" parameterOrder="estado customerCode">
+
+         <wsdl:input name="obtenerContratosConTmCodeRequest" message="impl:obtenerContratosConTmCodeRequest"/>
+
+         <wsdl:output name="obtenerContratosConTmCodeResponse" message="impl:obtenerContratosConTmCodeResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="rechazarTarjetaDeCredito" parameterOrder="customerCode nro_tarjeta user_login descripcion">
+
+         <wsdl:input name="rechazarTarjetaDeCreditoRequest" message="impl:rechazarTarjetaDeCreditoRequest"/>
+
+         <wsdl:output name="rechazarTarjetaDeCreditoResponse" message="impl:rechazarTarjetaDeCreditoResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="obtenerCliente" parameterOrder="customerId">
+
+         <wsdl:input name="obtenerClienteRequest" message="impl:obtenerClienteRequest"/>
+
+         <wsdl:output name="obtenerClienteResponse" message="impl:obtenerClienteResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="obtenerCargosYCreditos" parameterOrder="custCodeGC">
+
+         <wsdl:input name="obtenerCargosYCreditosRequest" message="impl:obtenerCargosYCreditosRequest"/>
+
+         <wsdl:output name="obtenerCargosYCreditosResponse" message="impl:obtenerCargosYCreditosResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="obtenerTransaccionCC" parameterOrder="customerId reversiones ctaCteCompleta">
+
+         <wsdl:input name="obtenerTransaccionCCRequest" message="impl:obtenerTransaccionCCRequest"/>
+
+         <wsdl:output name="obtenerTransaccionCCResponse" message="impl:obtenerTransaccionCCResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="validarSuscriptor" parameterOrder="customerId">
+
+         <wsdl:input name="validarSuscriptorRequest" message="impl:validarSuscriptorRequest"/>
+
+         <wsdl:output name="validarSuscriptorResponse" message="impl:validarSuscriptorResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="validarTelefonoEnvioSMS" parameterOrder="telefono">
+
+         <wsdl:input name="validarTelefonoEnvioSMSRequest" message="impl:validarTelefonoEnvioSMSRequest"/>
+
+         <wsdl:output name="validarTelefonoEnvioSMSResponse" message="impl:validarTelefonoEnvioSMSResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="validarEstadoTelEnvioSMS" parameterOrder="telefono">
+
+         <wsdl:input name="validarEstadoTelEnvioSMSRequest" message="impl:validarEstadoTelEnvioSMSRequest"/>
+
+         <wsdl:output name="validarEstadoTelEnvioSMSResponse" message="impl:validarEstadoTelEnvioSMSResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="obtenerTelefonoPlanMasCaro" parameterOrder="customerCode">
+
+         <wsdl:input name="obtenerTelefonoPlanMasCaroRequest" message="impl:obtenerTelefonoPlanMasCaroRequest"/>
+
+         <wsdl:output name="obtenerTelefonoPlanMasCaroResponse" message="impl:obtenerTelefonoPlanMasCaroResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="cantidadReemplazosSI" parameterOrder="contratoId fecha reasonsId">
+
+         <wsdl:input name="cantidadReemplazosSIRequest" message="impl:cantidadReemplazosSIRequest"/>
+
+         <wsdl:output name="cantidadReemplazosSIResponse" message="impl:cantidadReemplazosSIResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="cantidadReemplazosST" parameterOrder="contratoId fecha reasonsId">
+
+         <wsdl:input name="cantidadReemplazosSTRequest" message="impl:cantidadReemplazosSTRequest"/>
+
+         <wsdl:output name="cantidadReemplazosSTResponse" message="impl:cantidadReemplazosSTResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="cantidadReemplazosTakeOver" parameterOrder="contratoId fecha reasonsId tipoReemplazo">
+
+         <wsdl:input name="cantidadReemplazosTakeOverRequest" message="impl:cantidadReemplazosTakeOverRequest"/>
+
+         <wsdl:output name="cantidadReemplazosTakeOverResponse" message="impl:cantidadReemplazosTakeOverResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="cantidadReemplazosSTConTakeOver" parameterOrder="contratoId fecha reasonsId">
+
+         <wsdl:input name="cantidadReemplazosSTConTakeOverRequest" message="impl:cantidadReemplazosSTConTakeOverRequest"/>
+
+         <wsdl:output name="cantidadReemplazosSTConTakeOverResponse" message="impl:cantidadReemplazosSTConTakeOverResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="cantidadReemplazosSIConTakeOver" parameterOrder="contratoId fecha reasonsId">
+
+         <wsdl:input name="cantidadReemplazosSIConTakeOverRequest" message="impl:cantidadReemplazosSIConTakeOverRequest"/>
+
+         <wsdl:output name="cantidadReemplazosSIConTakeOverResponse" message="impl:cantidadReemplazosSIConTakeOverResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="rechazarTarjeta" parameterOrder="custcode nroTarjeta notaRechazo aplicacRechaza loginUsuario msgErr">
+
+         <wsdl:input name="rechazarTarjetaRequest" message="impl:rechazarTarjetaRequest"/>
+
+         <wsdl:output name="rechazarTarjetaResponse" message="impl:rechazarTarjetaResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="obtenerFechaHora">
+
+         <wsdl:input name="obtenerFechaHoraRequest" message="impl:obtenerFechaHoraRequest"/>
+
+         <wsdl:output name="obtenerFechaHoraResponse" message="impl:obtenerFechaHoraResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="tieneDeuda" parameterOrder="customerId diasDeGracia porcentajeDeuda">
+
+         <wsdl:input name="tieneDeudaRequest" message="impl:tieneDeudaRequest"/>
+
+         <wsdl:output name="tieneDeudaResponse" message="impl:tieneDeudaResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="obtenerDatosContrato" parameterOrder="p_contratoId">
+
+         <wsdl:input name="obtenerDatosContratoRequest" message="impl:obtenerDatosContratoRequest"/>
+
+         <wsdl:output name="obtenerDatosContratoResponse" message="impl:obtenerDatosContratoResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="cantidadFacturasUltimosSeisMeses" parameterOrder="customerId fechaSeisMeses">
+
+         <wsdl:input name="cantidadFacturasUltimosSeisMesesRequest" message="impl:cantidadFacturasUltimosSeisMesesRequest"/>
+
+         <wsdl:output name="cantidadFacturasUltimosSeisMesesResponse" message="impl:cantidadFacturasUltimosSeisMesesResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getEstadoContrato" parameterOrder="cliente imei">
+
+         <wsdl:input name="getEstadoContratoRequest" message="impl:getEstadoContratoRequest"/>
+
+         <wsdl:output name="getEstadoContratoResponse" message="impl:getEstadoContratoResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="tieneHistorialReemplazos" parameterOrder="contrato imei">
+
+         <wsdl:input name="tieneHistorialReemplazosRequest" message="impl:tieneHistorialReemplazosRequest"/>
+
+         <wsdl:output name="tieneHistorialReemplazosResponse" message="impl:tieneHistorialReemplazosResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getMsgNegativeFile" parameterOrder="imei">
+
+         <wsdl:input name="getMsgNegativeFileRequest" message="impl:getMsgNegativeFileRequest"/>
+
+         <wsdl:output name="getMsgNegativeFileResponse" message="impl:getMsgNegativeFileResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="obtenerQueryImeiCoId" parameterOrder="valor idContrato">
+
+         <wsdl:input name="obtenerQueryImeiCoIdRequest" message="impl:obtenerQueryImeiCoIdRequest"/>
+
+         <wsdl:output name="obtenerQueryImeiCoIdResponse" message="impl:obtenerQueryImeiCoIdResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="isSimDisponible" parameterOrder="imeiSIMSalida">
+
+         <wsdl:input name="isSimDisponibleRequest" message="impl:isSimDisponibleRequest"/>
+
+         <wsdl:output name="isSimDisponibleResponse" message="impl:isSimDisponibleResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="buscarNumeroSerieHandset" parameterOrder="imei">
+
+         <wsdl:input name="buscarNumeroSerieHandsetRequest" message="impl:buscarNumeroSerieHandsetRequest"/>
+
+         <wsdl:output name="buscarNumeroSerieHandsetResponse" message="impl:buscarNumeroSerieHandsetResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="buscarNumeroSerieSIM" parameterOrder="imei">
+
+         <wsdl:input name="buscarNumeroSerieSIMRequest" message="impl:buscarNumeroSerieSIMRequest"/>
+
+         <wsdl:output name="buscarNumeroSerieSIMResponse" message="impl:buscarNumeroSerieSIMResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="existeHandsetEnAvalon" parameterOrder="imeiHandset">
+
+         <wsdl:input name="existeHandsetEnAvalonRequest" message="impl:existeHandsetEnAvalonRequest"/>
+
+         <wsdl:output name="existeHandsetEnAvalonResponse" message="impl:existeHandsetEnAvalonResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getMontoAUVGtia" parameterOrder="pTmcode sncode">
+
+         <wsdl:input name="getMontoAUVGtiaRequest" message="impl:getMontoAUVGtiaRequest"/>
+
+         <wsdl:output name="getMontoAUVGtiaResponse" message="impl:getMontoAUVGtiaResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getDescripcionServicio" parameterOrder="sncode">
+
+         <wsdl:input name="getDescripcionServicioRequest" message="impl:getDescripcionServicioRequest"/>
+
+         <wsdl:output name="getDescripcionServicioResponse" message="impl:getDescripcionServicioResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getModelosImportados">
+
+         <wsdl:input name="getModelosImportadosRequest" message="impl:getModelosImportadosRequest"/>
+
+         <wsdl:output name="getModelosImportadosResponse" message="impl:getModelosImportadosResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="obtenerGranCuenta" parameterOrder="cliente">
+
+         <wsdl:input name="obtenerGranCuentaRequest" message="impl:obtenerGranCuentaRequest"/>
+
+         <wsdl:output name="obtenerGranCuentaResponse" message="impl:obtenerGranCuentaResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="buscarModeloByIdContrato" parameterOrder="idContrato">
+
+         <wsdl:input name="buscarModeloByIdContratoRequest" message="impl:buscarModeloByIdContratoRequest"/>
+
+         <wsdl:output name="buscarModeloByIdContratoResponse" message="impl:buscarModeloByIdContratoResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="buscarNroSerieEnBilling" parameterOrder="nroSerie">
+
+         <wsdl:input name="buscarNroSerieEnBillingRequest" message="impl:buscarNroSerieEnBillingRequest"/>
+
+         <wsdl:output name="buscarNroSerieEnBillingResponse" message="impl:buscarNroSerieEnBillingResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="buscarImeiEnBilling" parameterOrder="imei">
+
+         <wsdl:input name="buscarImeiEnBillingRequest" message="impl:buscarImeiEnBillingRequest"/>
+
+         <wsdl:output name="buscarImeiEnBillingResponse" message="impl:buscarImeiEnBillingResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getDireccionLocalidadCliente" parameterOrder="cliente">
+
+         <wsdl:input name="getDireccionLocalidadClienteRequest" message="impl:getDireccionLocalidadClienteRequest"/>
+
+         <wsdl:output name="getDireccionLocalidadClienteResponse" message="impl:getDireccionLocalidadClienteResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="obtenerRazonSocialDomicilio" parameterOrder="numeroCliente">
+
+         <wsdl:input name="obtenerRazonSocialDomicilioRequest" message="impl:obtenerRazonSocialDomicilioRequest"/>
+
+         <wsdl:output name="obtenerRazonSocialDomicilioResponse" message="impl:obtenerRazonSocialDomicilioResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="obtenerDatosCliente" parameterOrder="numeroCliente">
+
+         <wsdl:input name="obtenerDatosClienteRequest" message="impl:obtenerDatosClienteRequest"/>
+
+         <wsdl:output name="obtenerDatosClienteResponse" message="impl:obtenerDatosClienteResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="obtenerDiasFeriados">
+
+         <wsdl:input name="obtenerDiasFeriadosRequest" message="impl:obtenerDiasFeriadosRequest"/>
+
+         <wsdl:output name="obtenerDiasFeriadosResponse" message="impl:obtenerDiasFeriadosResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="obtenerTelefonosActivos" parameterOrder="customerId">
+
+         <wsdl:input name="obtenerTelefonosActivosRequest" message="impl:obtenerTelefonosActivosRequest"/>
+
+         <wsdl:output name="obtenerTelefonosActivosResponse" message="impl:obtenerTelefonosActivosResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="obtenerRazonSocial" parameterOrder="numeroCliente">
+
+         <wsdl:input name="obtenerRazonSocialRequest" message="impl:obtenerRazonSocialRequest"/>
+
+         <wsdl:output name="obtenerRazonSocialResponse" message="impl:obtenerRazonSocialResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="sumarContratosByCustomerCode" parameterOrder="customerCode">
+
+         <wsdl:input name="sumarContratosByCustomerCodeRequest" message="impl:sumarContratosByCustomerCodeRequest"/>
+
+         <wsdl:output name="sumarContratosByCustomerCodeResponse" message="impl:sumarContratosByCustomerCodeResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="obtenerDiasDeuda" parameterOrder="custcode">
+
+         <wsdl:input name="obtenerDiasDeudaRequest" message="impl:obtenerDiasDeudaRequest"/>
+
+         <wsdl:output name="obtenerDiasDeudaResponse" message="impl:obtenerDiasDeudaResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="obtenerColorSegmentacion" parameterOrder="customerCode">
+
+         <wsdl:input name="obtenerColorSegmentacionRequest" message="impl:obtenerColorSegmentacionRequest"/>
+
+         <wsdl:output name="obtenerColorSegmentacionResponse" message="impl:obtenerColorSegmentacionResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="obtenerCantMesesUltimoRechazo" parameterOrder="customerCode">
+
+         <wsdl:input name="obtenerCantMesesUltimoRechazoRequest" message="impl:obtenerCantMesesUltimoRechazoRequest"/>
+
+         <wsdl:output name="obtenerCantMesesUltimoRechazoResponse" message="impl:obtenerCantMesesUltimoRechazoResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="obtenerFechaUltimoRechazo" parameterOrder="customerCode">
+
+         <wsdl:input name="obtenerFechaUltimoRechazoRequest" message="impl:obtenerFechaUltimoRechazoRequest"/>
+
+         <wsdl:output name="obtenerFechaUltimoRechazoResponse" message="impl:obtenerFechaUltimoRechazoResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="obtenerAntiguedad" parameterOrder="customerCode">
+
+         <wsdl:input name="obtenerAntiguedadRequest" message="impl:obtenerAntiguedadRequest"/>
+
+         <wsdl:output name="obtenerAntiguedadResponse" message="impl:obtenerAntiguedadResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="isVIPContract" parameterOrder="customerCodeRP">
+
+         <wsdl:input name="isVIPContractRequest" message="impl:isVIPContractRequest"/>
+
+         <wsdl:output name="isVIPContractResponse" message="impl:isVIPContractResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="existeSimEnAvalon" parameterOrder="imei">
+
+         <wsdl:input name="existeSimEnAvalonRequest" message="impl:existeSimEnAvalonRequest"/>
+
+         <wsdl:output name="existeSimEnAvalonResponse" message="impl:existeSimEnAvalonResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="existeHandsetEnAvalonNoEagle" parameterOrder="imeiHandset">
+
+         <wsdl:input name="existeHandsetEnAvalonNoEagleRequest" message="impl:existeHandsetEnAvalonNoEagleRequest"/>
+
+         <wsdl:output name="existeHandsetEnAvalonNoEagleResponse" message="impl:existeHandsetEnAvalonNoEagleResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="estaRelease" parameterOrder="imei">
+
+         <wsdl:input name="estaReleaseRequest" message="impl:estaReleaseRequest"/>
+
+         <wsdl:output name="estaReleaseResponse" message="impl:estaReleaseResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="estaLinkeada" parameterOrder="imei">
+
+         <wsdl:input name="estaLinkeadaRequest" message="impl:estaLinkeadaRequest"/>
+
+         <wsdl:output name="estaLinkeadaResponse" message="impl:estaLinkeadaResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="isEagle" parameterOrder="imei">
+
+         <wsdl:input name="isEagleRequest" message="impl:isEagleRequest"/>
+
+         <wsdl:output name="isEagleResponse" message="impl:isEagleResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getHandsetAsociadoConSIM" parameterOrder="sim">
+
+         <wsdl:input name="getHandsetAsociadoConSIMRequest" message="impl:getHandsetAsociadoConSIMRequest"/>
+
+         <wsdl:output name="getHandsetAsociadoConSIMResponse" message="impl:getHandsetAsociadoConSIMResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getSIMsAsociadasConHandset" parameterOrder="handset">
+
+         <wsdl:input name="getSIMsAsociadasConHandsetRequest" message="impl:getSIMsAsociadasConHandsetRequest"/>
+
+         <wsdl:output name="getSIMsAsociadasConHandsetResponse" message="impl:getSIMsAsociadasConHandsetResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="ejecutarSuspensionContrato" parameterOrder="idContrato usuario idRs">
+
+         <wsdl:input name="ejecutarSuspensionContratoRequest" message="impl:ejecutarSuspensionContratoRequest"/>
+
+         <wsdl:output name="ejecutarSuspensionContratoResponse" message="impl:ejecutarSuspensionContratoResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="ejecutarReactivacionContrato" parameterOrder="idContrato usuario idRs">
+
+         <wsdl:input name="ejecutarReactivacionContratoRequest" message="impl:ejecutarReactivacionContratoRequest"/>
+
+         <wsdl:output name="ejecutarReactivacionContratoResponse" message="impl:ejecutarReactivacionContratoResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="obtenerSucursal" parameterOrder="customerId">
+
+         <wsdl:input name="obtenerSucursalRequest" message="impl:obtenerSucursalRequest"/>
+
+         <wsdl:output name="obtenerSucursalResponse" message="impl:obtenerSucursalResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="obtenerMotivosCategoriaSubcategoriaSuspender">
+
+         <wsdl:input name="obtenerMotivosCategoriaSubcategoriaSuspenderRequest" message="impl:obtenerMotivosCategoriaSubcategoriaSuspenderRequest"/>
+
+         <wsdl:output name="obtenerMotivosCategoriaSubcategoriaSuspenderResponse" message="impl:obtenerMotivosCategoriaSubcategoriaSuspenderResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="obtenerMotivosCategoriaSubcategoriaReactivar">
+
+         <wsdl:input name="obtenerMotivosCategoriaSubcategoriaReactivarRequest" message="impl:obtenerMotivosCategoriaSubcategoriaReactivarRequest"/>
+
+         <wsdl:output name="obtenerMotivosCategoriaSubcategoriaReactivarResponse" message="impl:obtenerMotivosCategoriaSubcategoriaReactivarResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="isGranCuenta" parameterOrder="grancuenta">
+
+         <wsdl:input name="isGranCuentaRequest" message="impl:isGranCuentaRequest"/>
+
+         <wsdl:output name="isGranCuentaResponse" message="impl:isGranCuentaResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="isSuscriptor" parameterOrder="suscriptor">
+
+         <wsdl:input name="isSuscriptorRequest" message="impl:isSuscriptorRequest"/>
+
+         <wsdl:output name="isSuscriptorResponse" message="impl:isSuscriptorResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="obtenerSuscriptoresPorGranCuenta" parameterOrder="grancuenta">
+
+         <wsdl:input name="obtenerSuscriptoresPorGranCuentaRequest" message="impl:obtenerSuscriptoresPorGranCuentaRequest"/>
+
+         <wsdl:output name="obtenerSuscriptoresPorGranCuentaResponse" message="impl:obtenerSuscriptoresPorGranCuentaResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="obtenerCustomerIdPorCustomerCode" parameterOrder="suscriptor">
+
+         <wsdl:input name="obtenerCustomerIdPorCustomerCodeRequest" message="impl:obtenerCustomerIdPorCustomerCodeRequest"/>
+
+         <wsdl:output name="obtenerCustomerIdPorCustomerCodeResponse" message="impl:obtenerCustomerIdPorCustomerCodeResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="igualIHLRFlotas" parameterOrder="flotaOrigen flotaDestino">
+
+         <wsdl:input name="igualIHLRFlotasRequest" message="impl:igualIHLRFlotasRequest"/>
+
+         <wsdl:output name="igualIHLRFlotasResponse" message="impl:igualIHLRFlotasResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="tieneServicio" parameterOrder="idContrato codigoServicio">
+
+         <wsdl:input name="tieneServicioRequest" message="impl:tieneServicioRequest"/>
+
+         <wsdl:output name="tieneServicioResponse" message="impl:tieneServicioResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="obtenerRechazosAvalon" parameterOrder="customerCode">
+
+         <wsdl:input name="obtenerRechazosAvalonRequest" message="impl:obtenerRechazosAvalonRequest"/>
+
+         <wsdl:output name="obtenerRechazosAvalonResponse" message="impl:obtenerRechazosAvalonResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="obtenerRechazosTarjetas" parameterOrder="customerCode">
+
+         <wsdl:input name="obtenerRechazosTarjetasRequest" message="impl:obtenerRechazosTarjetasRequest"/>
+
+         <wsdl:output name="obtenerRechazosTarjetasResponse" message="impl:obtenerRechazosTarjetasResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="obtenerAniNormalizado" parameterOrder="ani">
+
+         <wsdl:input name="obtenerAniNormalizadoRequest" message="impl:obtenerAniNormalizadoRequest"/>
+
+         <wsdl:output name="obtenerAniNormalizadoResponse" message="impl:obtenerAniNormalizadoResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="obtenerCuentaContratacion" parameterOrder="cuenta">
+
+         <wsdl:input name="obtenerCuentaContratacionRequest" message="impl:obtenerCuentaContratacionRequest"/>
+
+         <wsdl:output name="obtenerCuentaContratacionResponse" message="impl:obtenerCuentaContratacionResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="obtenerCuentasRPActivas" parameterOrder="customerCode">
+
+         <wsdl:input name="obtenerCuentasRPActivasRequest" message="impl:obtenerCuentasRPActivasRequest"/>
+
+         <wsdl:output name="obtenerCuentasRPActivasResponse" message="impl:obtenerCuentasRPActivasResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="obtenerGrupoAsigDeudor" parameterOrder="customerCode">
+
+         <wsdl:input name="obtenerGrupoAsigDeudorRequest" message="impl:obtenerGrupoAsigDeudorRequest"/>
+
+         <wsdl:output name="obtenerGrupoAsigDeudorResponse" message="impl:obtenerGrupoAsigDeudorResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="updateEmail" parameterOrder="customerId email">
+
+         <wsdl:input name="updateEmailRequest" message="impl:updateEmailRequest"/>
+
+         <wsdl:output name="updateEmailResponse" message="impl:updateEmailResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="estadoServicioContrato" parameterOrder="contrato sncode">
+
+         <wsdl:input name="estadoServicioContratoRequest" message="impl:estadoServicioContratoRequest"/>
+
+         <wsdl:output name="estadoServicioContratoResponse" message="impl:estadoServicioContratoResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="activarServicio" parameterOrder="contrato sncode fechaActivacion">
+
+         <wsdl:input name="activarServicioRequest" message="impl:activarServicioRequest"/>
+
+         <wsdl:output name="activarServicioResponse" message="impl:activarServicioResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="desactivarServicio" parameterOrder="contrato sncode fechaDesactivacion">
+
+         <wsdl:input name="desactivarServicioRequest" message="impl:desactivarServicioRequest"/>
+
+         <wsdl:output name="desactivarServicioResponse" message="impl:desactivarServicioResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="obtenerLimiteDeCompra" parameterOrder="custCode limiteCompraContrato">
+
+         <wsdl:input name="obtenerLimiteDeCompraRequest" message="impl:obtenerLimiteDeCompraRequest"/>
+
+         <wsdl:output name="obtenerLimiteDeCompraResponse" message="impl:obtenerLimiteDeCompraResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="obtenerContratosActivos" parameterOrder="customerCode">
+
+         <wsdl:input name="obtenerContratosActivosRequest" message="impl:obtenerContratosActivosRequest"/>
+
+         <wsdl:output name="obtenerContratosActivosResponse" message="impl:obtenerContratosActivosResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="obtenerContratosActivosConTmCode" parameterOrder="customerCode">
+
+         <wsdl:input name="obtenerContratosActivosConTmCodeRequest" message="impl:obtenerContratosActivosConTmCodeRequest"/>
+
+         <wsdl:output name="obtenerContratosActivosConTmCodeResponse" message="impl:obtenerContratosActivosConTmCodeResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="ObtenerTelefonosActivosSuspendidos" parameterOrder="customerCode">
+
+         <wsdl:input name="ObtenerTelefonosActivosSuspendidosRequest" message="impl:ObtenerTelefonosActivosSuspendidosRequest"/>
+
+         <wsdl:output name="ObtenerTelefonosActivosSuspendidosResponse" message="impl:ObtenerTelefonosActivosSuspendidosResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="ObtenerTelefonosActivosSuspendidosConFlota" parameterOrder="customerCode">
+
+         <wsdl:input name="ObtenerTelefonosActivosSuspendidosConFlotaRequest" message="impl:ObtenerTelefonosActivosSuspendidosConFlotaRequest"/>
+
+         <wsdl:output name="ObtenerTelefonosActivosSuspendidosConFlotaResponse" message="impl:ObtenerTelefonosActivosSuspendidosConFlotaResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="obtenerEstadoCuentaCompleto" parameterOrder="customerCode">
+
+         <wsdl:input name="obtenerEstadoCuentaCompletoRequest" message="impl:obtenerEstadoCuentaCompletoRequest"/>
+
+         <wsdl:output name="obtenerEstadoCuentaCompletoResponse" message="impl:obtenerEstadoCuentaCompletoResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="obtenerContratosReactivarAutomaticamente" parameterOrder="customerCode motivosSuspensionTelecobranzas">
+
+         <wsdl:input name="obtenerContratosReactivarAutomaticamenteRequest" message="impl:obtenerContratosReactivarAutomaticamenteRequest"/>
+
+         <wsdl:output name="obtenerContratosReactivarAutomaticamenteResponse" message="impl:obtenerContratosReactivarAutomaticamenteResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="obtenerMsgErrorReactivarAutomaticamente" parameterOrder="customerCode motivosSuspensionTelecobranzas">
+
+         <wsdl:input name="obtenerMsgErrorReactivarAutomaticamenteRequest" message="impl:obtenerMsgErrorReactivarAutomaticamenteRequest"/>
+
+         <wsdl:output name="obtenerMsgErrorReactivarAutomaticamenteResponse" message="impl:obtenerMsgErrorReactivarAutomaticamenteResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="obtenerContratosActivosRP" parameterOrder="customerCodeGranCuenta">
+
+         <wsdl:input name="obtenerContratosActivosRPRequest" message="impl:obtenerContratosActivosRPRequest"/>
+
+         <wsdl:output name="obtenerContratosActivosRPResponse" message="impl:obtenerContratosActivosRPResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getMontoFacturasVencidas" parameterOrder="customerCodeGC fechaDesde fechaHasta">
+
+         <wsdl:input name="getMontoFacturasVencidasRequest" message="impl:getMontoFacturasVencidasRequest"/>
+
+         <wsdl:output name="getMontoFacturasVencidasResponse" message="impl:getMontoFacturasVencidasResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="ejecutarSuspensionParcialContrato" parameterOrder="idContrato usuario idRs idGestionVantive fechaSuspencionTotal">
+
+         <wsdl:input name="ejecutarSuspensionParcialContratoRequest" message="impl:ejecutarSuspensionParcialContratoRequest"/>
+
+         <wsdl:output name="ejecutarSuspensionParcialContratoResponse" message="impl:ejecutarSuspensionParcialContratoResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="obtenerDatosMailMora">
+
+         <wsdl:input name="obtenerDatosMailMoraRequest" message="impl:obtenerDatosMailMoraRequest"/>
+
+         <wsdl:output name="obtenerDatosMailMoraResponse" message="impl:obtenerDatosMailMoraResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getAdheridoFcElectronica" parameterOrder="custcode">
+
+         <wsdl:input name="getAdheridoFcElectronicaRequest" message="impl:getAdheridoFcElectronicaRequest"/>
+
+         <wsdl:output name="getAdheridoFcElectronicaResponse" message="impl:getAdheridoFcElectronicaResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getMisAlertas" parameterOrder="numClient">
+
+         <wsdl:input name="getMisAlertasRequest" message="impl:getMisAlertasRequest"/>
+
+         <wsdl:output name="getMisAlertasResponse" message="impl:getMisAlertasResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="obtenerInfoFactura" parameterOrder="customerCode">
+
+         <wsdl:input name="obtenerInfoFacturaRequest" message="impl:obtenerInfoFacturaRequest"/>
+
+         <wsdl:output name="obtenerInfoFacturaResponse" message="impl:obtenerInfoFacturaResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="montoFacturasNuevasTelecobranzas" parameterOrder="customerCode">
+
+         <wsdl:input name="montoFacturasNuevasTelecobranzasRequest" message="impl:montoFacturasNuevasTelecobranzasRequest"/>
+
+         <wsdl:output name="montoFacturasNuevasTelecobranzasResponse" message="impl:montoFacturasNuevasTelecobranzasResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="cantidadSuscriptoresResponsablesDePago" parameterOrder="customerCode">
+
+         <wsdl:input name="cantidadSuscriptoresResponsablesDePagoRequest" message="impl:cantidadSuscriptoresResponsablesDePagoRequest"/>
+
+         <wsdl:output name="cantidadSuscriptoresResponsablesDePagoResponse" message="impl:cantidadSuscriptoresResponsablesDePagoResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="obtenerSuspTelecob" parameterOrder="customerCode motivosSuspensionTelecobranzas">
+
+         <wsdl:input name="obtenerSuspTelecobRequest" message="impl:obtenerSuspTelecobRequest"/>
+
+         <wsdl:output name="obtenerSuspTelecobResponse" message="impl:obtenerSuspTelecobResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getContext">
+
+         <wsdl:input name="getContextRequest" message="impl:getContextRequest"/>
+
+         <wsdl:output name="getContextResponse" message="impl:getContextResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getMessageContext">
+
+         <wsdl:input name="getMessageContextRequest" message="impl:getMessageContextRequest"/>
+
+         <wsdl:output name="getMessageContextResponse" message="impl:getMessageContextResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getServletContext">
+
+         <wsdl:input name="getServletContextRequest" message="impl:getServletContextRequest"/>
+
+         <wsdl:output name="getServletContextResponse" message="impl:getServletContextResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getUserPrincipal">
+
+         <wsdl:input name="getUserPrincipalRequest" message="impl:getUserPrincipalRequest"/>
+
+         <wsdl:output name="getUserPrincipalResponse" message="impl:getUserPrincipalResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getHttpSession">
+
+         <wsdl:input name="getHttpSessionRequest" message="impl:getHttpSessionRequest"/>
+
+         <wsdl:output name="getHttpSessionResponse" message="impl:getHttpSessionResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="isUserInRole" parameterOrder="role">
+
+         <wsdl:input name="isUserInRoleRequest" message="impl:isUserInRoleRequest"/>
+
+         <wsdl:output name="isUserInRoleResponse" message="impl:isUserInRoleResponse"/>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="AvalonWSSoapBinding" type="impl:AvalonWS">
+
+      <wsdlsoap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="obtenerFlotaPorContrato">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="obtenerFlotaPorContratoRequest">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://facade.avalon.nextel.com.ar"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="obtenerFlotaPorContratoResponse">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://ar/com/nextel/avalon/facade/AvalonWS.wsdl"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="tieneTransaccionesPendientes">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="tieneTransaccionesPendientesRequest">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://facade.avalon.nextel.com.ar"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="tieneTransaccionesPendientesResponse">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://ar/com/nextel/avalon/facade/AvalonWS.wsdl"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="obtenerClienteByPhone">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="obtenerClienteByPhoneRequest">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://facade.avalon.nextel.com.ar"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="obtenerClienteByPhoneResponse">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://ar/com/nextel/avalon/facade/AvalonWS.wsdl"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="romperLink">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="romperLinkRequest">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://facade.avalon.nextel.com.ar"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="romperLinkResponse">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://ar/com/nextel/avalon/facade/AvalonWS.wsdl"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="crearLink">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="crearLinkRequest">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://facade.avalon.nextel.com.ar"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="crearLinkResponse">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://ar/com/nextel/avalon/facade/AvalonWS.wsdl"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="obtenerAgingByClient">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="obtenerAgingByClientRequest">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://facade.avalon.nextel.com.ar"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="obtenerAgingByClientResponse">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://ar/com/nextel/avalon/facade/AvalonWS.wsdl"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="obtenerCustomerBigAccount">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="obtenerCustomerBigAccountRequest">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://facade.avalon.nextel.com.ar"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="obtenerCustomerBigAccountResponse">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://ar/com/nextel/avalon/facade/AvalonWS.wsdl"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="obtenerRPAsociadoAlCliente">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="obtenerRPAsociadoAlClienteRequest">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://facade.avalon.nextel.com.ar"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="obtenerRPAsociadoAlClienteResponse">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://ar/com/nextel/avalon/facade/AvalonWS.wsdl"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="obtenerAgingConsolidado">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="obtenerAgingConsolidadoRequest">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://facade.avalon.nextel.com.ar"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="obtenerAgingConsolidadoResponse">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://ar/com/nextel/avalon/facade/AvalonWS.wsdl"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="obtenerContratoCuenta">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="obtenerContratoCuentaRequest">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://facade.avalon.nextel.com.ar"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="obtenerContratoCuentaResponse">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://ar/com/nextel/avalon/facade/AvalonWS.wsdl"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="obtenerTipoCliente">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="obtenerTipoClienteRequest">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://facade.avalon.nextel.com.ar"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="obtenerTipoClienteResponse">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://ar/com/nextel/avalon/facade/AvalonWS.wsdl"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="obtenerContratos">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="obtenerContratosRequest">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://facade.avalon.nextel.com.ar"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="obtenerContratosResponse">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://ar/com/nextel/avalon/facade/AvalonWS.wsdl"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="obtenerContratosConTmCode">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="obtenerContratosConTmCodeRequest">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://facade.avalon.nextel.com.ar"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="obtenerContratosConTmCodeResponse">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://ar/com/nextel/avalon/facade/AvalonWS.wsdl"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="rechazarTarjetaDeCredito">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="rechazarTarjetaDeCreditoRequest">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://facade.avalon.nextel.com.ar"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="rechazarTarjetaDeCreditoResponse">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://ar/com/nextel/avalon/facade/AvalonWS.wsdl"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="obtenerCliente">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="obtenerClienteRequest">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://facade.avalon.nextel.com.ar"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="obtenerClienteResponse">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://ar/com/nextel/avalon/facade/AvalonWS.wsdl"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="obtenerCargosYCreditos">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="obtenerCargosYCreditosRequest">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://facade.avalon.nextel.com.ar"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="obtenerCargosYCreditosResponse">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://ar/com/nextel/avalon/facade/AvalonWS.wsdl"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="obtenerTransaccionCC">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="obtenerTransaccionCCRequest">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://facade.avalon.nextel.com.ar"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="obtenerTransaccionCCResponse">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://ar/com/nextel/avalon/facade/AvalonWS.wsdl"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="validarSuscriptor">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="validarSuscriptorRequest">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://facade.avalon.nextel.com.ar"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="validarSuscriptorResponse">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://ar/com/nextel/avalon/facade/AvalonWS.wsdl"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="validarTelefonoEnvioSMS">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="validarTelefonoEnvioSMSRequest">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://facade.avalon.nextel.com.ar"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="validarTelefonoEnvioSMSResponse">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://ar/com/nextel/avalon/facade/AvalonWS.wsdl"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="validarEstadoTelEnvioSMS">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="validarEstadoTelEnvioSMSRequest">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://facade.avalon.nextel.com.ar"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="validarEstadoTelEnvioSMSResponse">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://ar/com/nextel/avalon/facade/AvalonWS.wsdl"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="obtenerTelefonoPlanMasCaro">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="obtenerTelefonoPlanMasCaroRequest">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://facade.avalon.nextel.com.ar"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="obtenerTelefonoPlanMasCaroResponse">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://ar/com/nextel/avalon/facade/AvalonWS.wsdl"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="cantidadReemplazosSI">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="cantidadReemplazosSIRequest">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://facade.avalon.nextel.com.ar"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="cantidadReemplazosSIResponse">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://ar/com/nextel/avalon/facade/AvalonWS.wsdl"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="cantidadReemplazosST">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="cantidadReemplazosSTRequest">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://facade.avalon.nextel.com.ar"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="cantidadReemplazosSTResponse">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://ar/com/nextel/avalon/facade/AvalonWS.wsdl"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="cantidadReemplazosTakeOver">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="cantidadReemplazosTakeOverRequest">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://facade.avalon.nextel.com.ar"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="cantidadReemplazosTakeOverResponse">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://ar/com/nextel/avalon/facade/AvalonWS.wsdl"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="cantidadReemplazosSTConTakeOver">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="cantidadReemplazosSTConTakeOverRequest">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://facade.avalon.nextel.com.ar"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="cantidadReemplazosSTConTakeOverResponse">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://ar/com/nextel/avalon/facade/AvalonWS.wsdl"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="cantidadReemplazosSIConTakeOver">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="cantidadReemplazosSIConTakeOverRequest">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://facade.avalon.nextel.com.ar"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="cantidadReemplazosSIConTakeOverResponse">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://ar/com/nextel/avalon/facade/AvalonWS.wsdl"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="rechazarTarjeta">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="rechazarTarjetaRequest">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://facade.avalon.nextel.com.ar"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="rechazarTarjetaResponse">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://ar/com/nextel/avalon/facade/AvalonWS.wsdl"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="obtenerFechaHora">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="obtenerFechaHoraRequest">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://facade.avalon.nextel.com.ar"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="obtenerFechaHoraResponse">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://ar/com/nextel/avalon/facade/AvalonWS.wsdl"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="tieneDeuda">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="tieneDeudaRequest">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://facade.avalon.nextel.com.ar"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="tieneDeudaResponse">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://ar/com/nextel/avalon/facade/AvalonWS.wsdl"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="obtenerDatosContrato">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="obtenerDatosContratoRequest">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://facade.avalon.nextel.com.ar"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="obtenerDatosContratoResponse">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://ar/com/nextel/avalon/facade/AvalonWS.wsdl"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="cantidadFacturasUltimosSeisMeses">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="cantidadFacturasUltimosSeisMesesRequest">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://facade.avalon.nextel.com.ar"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="cantidadFacturasUltimosSeisMesesResponse">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://ar/com/nextel/avalon/facade/AvalonWS.wsdl"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getEstadoContrato">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getEstadoContratoRequest">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://facade.avalon.nextel.com.ar"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getEstadoContratoResponse">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://ar/com/nextel/avalon/facade/AvalonWS.wsdl"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="tieneHistorialReemplazos">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="tieneHistorialReemplazosRequest">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://facade.avalon.nextel.com.ar"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="tieneHistorialReemplazosResponse">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://ar/com/nextel/avalon/facade/AvalonWS.wsdl"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getMsgNegativeFile">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getMsgNegativeFileRequest">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://facade.avalon.nextel.com.ar"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getMsgNegativeFileResponse">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://ar/com/nextel/avalon/facade/AvalonWS.wsdl"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="obtenerQueryImeiCoId">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="obtenerQueryImeiCoIdRequest">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://facade.avalon.nextel.com.ar"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="obtenerQueryImeiCoIdResponse">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://ar/com/nextel/avalon/facade/AvalonWS.wsdl"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="isSimDisponible">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="isSimDisponibleRequest">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://facade.avalon.nextel.com.ar"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="isSimDisponibleResponse">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://ar/com/nextel/avalon/facade/AvalonWS.wsdl"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="buscarNumeroSerieHandset">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="buscarNumeroSerieHandsetRequest">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://facade.avalon.nextel.com.ar"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="buscarNumeroSerieHandsetResponse">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://ar/com/nextel/avalon/facade/AvalonWS.wsdl"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="buscarNumeroSerieSIM">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="buscarNumeroSerieSIMRequest">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://facade.avalon.nextel.com.ar"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="buscarNumeroSerieSIMResponse">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://ar/com/nextel/avalon/facade/AvalonWS.wsdl"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="existeHandsetEnAvalon">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="existeHandsetEnAvalonRequest">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://facade.avalon.nextel.com.ar"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="existeHandsetEnAvalonResponse">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://ar/com/nextel/avalon/facade/AvalonWS.wsdl"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getMontoAUVGtia">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getMontoAUVGtiaRequest">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://facade.avalon.nextel.com.ar"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getMontoAUVGtiaResponse">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://ar/com/nextel/avalon/facade/AvalonWS.wsdl"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getDescripcionServicio">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getDescripcionServicioRequest">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://facade.avalon.nextel.com.ar"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getDescripcionServicioResponse">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://ar/com/nextel/avalon/facade/AvalonWS.wsdl"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getModelosImportados">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getModelosImportadosRequest">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://facade.avalon.nextel.com.ar"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getModelosImportadosResponse">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://ar/com/nextel/avalon/facade/AvalonWS.wsdl"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="obtenerGranCuenta">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="obtenerGranCuentaRequest">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://facade.avalon.nextel.com.ar"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="obtenerGranCuentaResponse">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://ar/com/nextel/avalon/facade/AvalonWS.wsdl"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="buscarModeloByIdContrato">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="buscarModeloByIdContratoRequest">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://facade.avalon.nextel.com.ar"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="buscarModeloByIdContratoResponse">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://ar/com/nextel/avalon/facade/AvalonWS.wsdl"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="buscarNroSerieEnBilling">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="buscarNroSerieEnBillingRequest">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://facade.avalon.nextel.com.ar"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="buscarNroSerieEnBillingResponse">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://ar/com/nextel/avalon/facade/AvalonWS.wsdl"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="buscarImeiEnBilling">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="buscarImeiEnBillingRequest">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://facade.avalon.nextel.com.ar"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="buscarImeiEnBillingResponse">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://ar/com/nextel/avalon/facade/AvalonWS.wsdl"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getDireccionLocalidadCliente">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getDireccionLocalidadClienteRequest">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://facade.avalon.nextel.com.ar"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getDireccionLocalidadClienteResponse">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://ar/com/nextel/avalon/facade/AvalonWS.wsdl"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="obtenerRazonSocialDomicilio">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="obtenerRazonSocialDomicilioRequest">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://facade.avalon.nextel.com.ar"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="obtenerRazonSocialDomicilioResponse">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://ar/com/nextel/avalon/facade/AvalonWS.wsdl"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="obtenerDatosCliente">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="obtenerDatosClienteRequest">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://facade.avalon.nextel.com.ar"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="obtenerDatosClienteResponse">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://ar/com/nextel/avalon/facade/AvalonWS.wsdl"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="obtenerDiasFeriados">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="obtenerDiasFeriadosRequest">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://facade.avalon.nextel.com.ar"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="obtenerDiasFeriadosResponse">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://ar/com/nextel/avalon/facade/AvalonWS.wsdl"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="obtenerTelefonosActivos">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="obtenerTelefonosActivosRequest">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://facade.avalon.nextel.com.ar"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="obtenerTelefonosActivosResponse">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://ar/com/nextel/avalon/facade/AvalonWS.wsdl"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="obtenerRazonSocial">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="obtenerRazonSocialRequest">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://facade.avalon.nextel.com.ar"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="obtenerRazonSocialResponse">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://ar/com/nextel/avalon/facade/AvalonWS.wsdl"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="sumarContratosByCustomerCode">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="sumarContratosByCustomerCodeRequest">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://facade.avalon.nextel.com.ar"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="sumarContratosByCustomerCodeResponse">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://ar/com/nextel/avalon/facade/AvalonWS.wsdl"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="obtenerDiasDeuda">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="obtenerDiasDeudaRequest">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://facade.avalon.nextel.com.ar"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="obtenerDiasDeudaResponse">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://ar/com/nextel/avalon/facade/AvalonWS.wsdl"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="obtenerColorSegmentacion">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="obtenerColorSegmentacionRequest">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://facade.avalon.nextel.com.ar"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="obtenerColorSegmentacionResponse">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://ar/com/nextel/avalon/facade/AvalonWS.wsdl"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="obtenerCantMesesUltimoRechazo">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="obtenerCantMesesUltimoRechazoRequest">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://facade.avalon.nextel.com.ar"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="obtenerCantMesesUltimoRechazoResponse">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://ar/com/nextel/avalon/facade/AvalonWS.wsdl"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="obtenerFechaUltimoRechazo">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="obtenerFechaUltimoRechazoRequest">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://facade.avalon.nextel.com.ar"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="obtenerFechaUltimoRechazoResponse">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://ar/com/nextel/avalon/facade/AvalonWS.wsdl"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="obtenerAntiguedad">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="obtenerAntiguedadRequest">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://facade.avalon.nextel.com.ar"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="obtenerAntiguedadResponse">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://ar/com/nextel/avalon/facade/AvalonWS.wsdl"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="isVIPContract">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="isVIPContractRequest">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://facade.avalon.nextel.com.ar"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="isVIPContractResponse">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://ar/com/nextel/avalon/facade/AvalonWS.wsdl"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="existeSimEnAvalon">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="existeSimEnAvalonRequest">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://facade.avalon.nextel.com.ar"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="existeSimEnAvalonResponse">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://ar/com/nextel/avalon/facade/AvalonWS.wsdl"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="existeHandsetEnAvalonNoEagle">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="existeHandsetEnAvalonNoEagleRequest">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://facade.avalon.nextel.com.ar"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="existeHandsetEnAvalonNoEagleResponse">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://ar/com/nextel/avalon/facade/AvalonWS.wsdl"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="estaRelease">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="estaReleaseRequest">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://facade.avalon.nextel.com.ar"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="estaReleaseResponse">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://ar/com/nextel/avalon/facade/AvalonWS.wsdl"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="estaLinkeada">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="estaLinkeadaRequest">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://facade.avalon.nextel.com.ar"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="estaLinkeadaResponse">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://ar/com/nextel/avalon/facade/AvalonWS.wsdl"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="isEagle">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="isEagleRequest">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://facade.avalon.nextel.com.ar"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="isEagleResponse">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://ar/com/nextel/avalon/facade/AvalonWS.wsdl"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getHandsetAsociadoConSIM">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getHandsetAsociadoConSIMRequest">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://facade.avalon.nextel.com.ar"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getHandsetAsociadoConSIMResponse">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://ar/com/nextel/avalon/facade/AvalonWS.wsdl"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getSIMsAsociadasConHandset">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getSIMsAsociadasConHandsetRequest">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://facade.avalon.nextel.com.ar"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getSIMsAsociadasConHandsetResponse">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://ar/com/nextel/avalon/facade/AvalonWS.wsdl"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="ejecutarSuspensionContrato">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="ejecutarSuspensionContratoRequest">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://facade.avalon.nextel.com.ar"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="ejecutarSuspensionContratoResponse">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://ar/com/nextel/avalon/facade/AvalonWS.wsdl"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="ejecutarReactivacionContrato">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="ejecutarReactivacionContratoRequest">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://facade.avalon.nextel.com.ar"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="ejecutarReactivacionContratoResponse">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://ar/com/nextel/avalon/facade/AvalonWS.wsdl"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="obtenerSucursal">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="obtenerSucursalRequest">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://facade.avalon.nextel.com.ar"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="obtenerSucursalResponse">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://ar/com/nextel/avalon/facade/AvalonWS.wsdl"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="obtenerMotivosCategoriaSubcategoriaSuspender">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="obtenerMotivosCategoriaSubcategoriaSuspenderRequest">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://facade.avalon.nextel.com.ar"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="obtenerMotivosCategoriaSubcategoriaSuspenderResponse">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://ar/com/nextel/avalon/facade/AvalonWS.wsdl"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="obtenerMotivosCategoriaSubcategoriaReactivar">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="obtenerMotivosCategoriaSubcategoriaReactivarRequest">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://facade.avalon.nextel.com.ar"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="obtenerMotivosCategoriaSubcategoriaReactivarResponse">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://ar/com/nextel/avalon/facade/AvalonWS.wsdl"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="isGranCuenta">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="isGranCuentaRequest">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://facade.avalon.nextel.com.ar"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="isGranCuentaResponse">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://ar/com/nextel/avalon/facade/AvalonWS.wsdl"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="isSuscriptor">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="isSuscriptorRequest">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://facade.avalon.nextel.com.ar"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="isSuscriptorResponse">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://ar/com/nextel/avalon/facade/AvalonWS.wsdl"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="obtenerSuscriptoresPorGranCuenta">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="obtenerSuscriptoresPorGranCuentaRequest">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://facade.avalon.nextel.com.ar"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="obtenerSuscriptoresPorGranCuentaResponse">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://ar/com/nextel/avalon/facade/AvalonWS.wsdl"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="obtenerCustomerIdPorCustomerCode">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="obtenerCustomerIdPorCustomerCodeRequest">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://facade.avalon.nextel.com.ar"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="obtenerCustomerIdPorCustomerCodeResponse">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://ar/com/nextel/avalon/facade/AvalonWS.wsdl"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="igualIHLRFlotas">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="igualIHLRFlotasRequest">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://facade.avalon.nextel.com.ar"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="igualIHLRFlotasResponse">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://ar/com/nextel/avalon/facade/AvalonWS.wsdl"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="tieneServicio">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="tieneServicioRequest">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://facade.avalon.nextel.com.ar"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="tieneServicioResponse">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://ar/com/nextel/avalon/facade/AvalonWS.wsdl"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="obtenerRechazosAvalon">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="obtenerRechazosAvalonRequest">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://facade.avalon.nextel.com.ar"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="obtenerRechazosAvalonResponse">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://ar/com/nextel/avalon/facade/AvalonWS.wsdl"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="obtenerRechazosTarjetas">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="obtenerRechazosTarjetasRequest">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://facade.avalon.nextel.com.ar"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="obtenerRechazosTarjetasResponse">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://ar/com/nextel/avalon/facade/AvalonWS.wsdl"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="obtenerAniNormalizado">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="obtenerAniNormalizadoRequest">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://facade.avalon.nextel.com.ar"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="obtenerAniNormalizadoResponse">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://ar/com/nextel/avalon/facade/AvalonWS.wsdl"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="obtenerCuentaContratacion">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="obtenerCuentaContratacionRequest">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://facade.avalon.nextel.com.ar"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="obtenerCuentaContratacionResponse">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://ar/com/nextel/avalon/facade/AvalonWS.wsdl"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="obtenerCuentasRPActivas">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="obtenerCuentasRPActivasRequest">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://facade.avalon.nextel.com.ar"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="obtenerCuentasRPActivasResponse">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://ar/com/nextel/avalon/facade/AvalonWS.wsdl"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="obtenerGrupoAsigDeudor">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="obtenerGrupoAsigDeudorRequest">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://facade.avalon.nextel.com.ar"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="obtenerGrupoAsigDeudorResponse">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://ar/com/nextel/avalon/facade/AvalonWS.wsdl"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="updateEmail">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="updateEmailRequest">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://facade.avalon.nextel.com.ar"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="updateEmailResponse">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://ar/com/nextel/avalon/facade/AvalonWS.wsdl"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="estadoServicioContrato">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="estadoServicioContratoRequest">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://facade.avalon.nextel.com.ar"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="estadoServicioContratoResponse">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://ar/com/nextel/avalon/facade/AvalonWS.wsdl"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="activarServicio">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="activarServicioRequest">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://facade.avalon.nextel.com.ar"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="activarServicioResponse">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://ar/com/nextel/avalon/facade/AvalonWS.wsdl"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="desactivarServicio">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="desactivarServicioRequest">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://facade.avalon.nextel.com.ar"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="desactivarServicioResponse">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://ar/com/nextel/avalon/facade/AvalonWS.wsdl"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="obtenerLimiteDeCompra">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="obtenerLimiteDeCompraRequest">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://facade.avalon.nextel.com.ar"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="obtenerLimiteDeCompraResponse">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://ar/com/nextel/avalon/facade/AvalonWS.wsdl"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="obtenerContratosActivos">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="obtenerContratosActivosRequest">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://facade.avalon.nextel.com.ar"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="obtenerContratosActivosResponse">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://ar/com/nextel/avalon/facade/AvalonWS.wsdl"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="obtenerContratosActivosConTmCode">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="obtenerContratosActivosConTmCodeRequest">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://facade.avalon.nextel.com.ar"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="obtenerContratosActivosConTmCodeResponse">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://ar/com/nextel/avalon/facade/AvalonWS.wsdl"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="ObtenerTelefonosActivosSuspendidos">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="ObtenerTelefonosActivosSuspendidosRequest">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://facade.avalon.nextel.com.ar"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="ObtenerTelefonosActivosSuspendidosResponse">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://ar/com/nextel/avalon/facade/AvalonWS.wsdl"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="ObtenerTelefonosActivosSuspendidosConFlota">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="ObtenerTelefonosActivosSuspendidosConFlotaRequest">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://facade.avalon.nextel.com.ar"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="ObtenerTelefonosActivosSuspendidosConFlotaResponse">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://ar/com/nextel/avalon/facade/AvalonWS.wsdl"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="obtenerEstadoCuentaCompleto">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="obtenerEstadoCuentaCompletoRequest">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://facade.avalon.nextel.com.ar"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="obtenerEstadoCuentaCompletoResponse">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://ar/com/nextel/avalon/facade/AvalonWS.wsdl"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="obtenerContratosReactivarAutomaticamente">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="obtenerContratosReactivarAutomaticamenteRequest">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://facade.avalon.nextel.com.ar"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="obtenerContratosReactivarAutomaticamenteResponse">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://ar/com/nextel/avalon/facade/AvalonWS.wsdl"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="obtenerMsgErrorReactivarAutomaticamente">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="obtenerMsgErrorReactivarAutomaticamenteRequest">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://facade.avalon.nextel.com.ar"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="obtenerMsgErrorReactivarAutomaticamenteResponse">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://ar/com/nextel/avalon/facade/AvalonWS.wsdl"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="obtenerContratosActivosRP">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="obtenerContratosActivosRPRequest">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://facade.avalon.nextel.com.ar"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="obtenerContratosActivosRPResponse">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://ar/com/nextel/avalon/facade/AvalonWS.wsdl"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getMontoFacturasVencidas">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getMontoFacturasVencidasRequest">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://facade.avalon.nextel.com.ar"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getMontoFacturasVencidasResponse">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://ar/com/nextel/avalon/facade/AvalonWS.wsdl"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="ejecutarSuspensionParcialContrato">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="ejecutarSuspensionParcialContratoRequest">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://facade.avalon.nextel.com.ar"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="ejecutarSuspensionParcialContratoResponse">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://ar/com/nextel/avalon/facade/AvalonWS.wsdl"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="obtenerDatosMailMora">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="obtenerDatosMailMoraRequest">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://facade.avalon.nextel.com.ar"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="obtenerDatosMailMoraResponse">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://ar/com/nextel/avalon/facade/AvalonWS.wsdl"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getAdheridoFcElectronica">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getAdheridoFcElectronicaRequest">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://facade.avalon.nextel.com.ar"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getAdheridoFcElectronicaResponse">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://ar/com/nextel/avalon/facade/AvalonWS.wsdl"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getMisAlertas">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getMisAlertasRequest">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://facade.avalon.nextel.com.ar"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getMisAlertasResponse">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://ar/com/nextel/avalon/facade/AvalonWS.wsdl"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="obtenerInfoFactura">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="obtenerInfoFacturaRequest">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://facade.avalon.nextel.com.ar"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="obtenerInfoFacturaResponse">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://ar/com/nextel/avalon/facade/AvalonWS.wsdl"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="montoFacturasNuevasTelecobranzas">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="montoFacturasNuevasTelecobranzasRequest">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://facade.avalon.nextel.com.ar"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="montoFacturasNuevasTelecobranzasResponse">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://ar/com/nextel/avalon/facade/AvalonWS.wsdl"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="cantidadSuscriptoresResponsablesDePago">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="cantidadSuscriptoresResponsablesDePagoRequest">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://facade.avalon.nextel.com.ar"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="cantidadSuscriptoresResponsablesDePagoResponse">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://ar/com/nextel/avalon/facade/AvalonWS.wsdl"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="obtenerSuspTelecob">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="obtenerSuspTelecobRequest">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://facade.avalon.nextel.com.ar"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="obtenerSuspTelecobResponse">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://ar/com/nextel/avalon/facade/AvalonWS.wsdl"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getContext">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getContextRequest">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://facade.avalon.nextel.com.ar"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getContextResponse">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://ar/com/nextel/avalon/facade/AvalonWS.wsdl"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getMessageContext">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getMessageContextRequest">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://http.transport.axis.apache.org"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getMessageContextResponse">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://ar/com/nextel/avalon/facade/AvalonWS.wsdl"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getServletContext">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getServletContextRequest">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://http.transport.axis.apache.org"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getServletContextResponse">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://ar/com/nextel/avalon/facade/AvalonWS.wsdl"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getUserPrincipal">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getUserPrincipalRequest">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://http.transport.axis.apache.org"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getUserPrincipalResponse">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://ar/com/nextel/avalon/facade/AvalonWS.wsdl"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getHttpSession">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getHttpSessionRequest">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://http.transport.axis.apache.org"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getHttpSessionResponse">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://ar/com/nextel/avalon/facade/AvalonWS.wsdl"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="isUserInRole">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="isUserInRoleRequest">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://http.transport.axis.apache.org"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="isUserInRoleResponse">
+
+            <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://ar/com/nextel/avalon/facade/AvalonWS.wsdl"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="AvalonWSService">
+
+      <wsdl:port name="AvalonWS" binding="impl:AvalonWSSoapBinding">
+
+         <wsdlsoap:address location="http://baslije12.nextel.com.ar:7778/avalonWS/AvalonWS"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
 </wsdl:definitions>

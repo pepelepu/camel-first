@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:cxf="http://camel.apache.org/schema/cxf"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:cxf="http://camel.apache.org/schema/cxf"
 	xsi:schemaLocation="
         http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
         http://camel.apache.org/schema/cxf http://camel.apache.org/schema/cxf/camel-cxf.xsd
@@ -23,7 +24,7 @@
 
 	<!-- Este WS es un producer endpoint (o sea, para usar en un 'to') -->
 	<cxf:cxfEndpoint id="avalonEndpoint"
-		address="http://xxxxx.com.ar:7778/avalonWS/AvalonWS"
+		address="http://baslije12.nextel.com.ar:7778/avalonWS/AvalonWS"
 		wsdlURL="src/main/resources/META-INF/AvalonWS.wsdl">
 		<cxf:properties>
 			<entry key="dataFormat" value="PAYLOAD" />
@@ -31,10 +32,25 @@
 	</cxf:cxfEndpoint>
 
 	<!-- Este WS es un consumer endpoint (o sea, para usar en un 'from') -->
-	<cxf:cxfEndpoint id="soapMessageEndpoint"
+	<cxf:cxfEndpoint id="soapMessageEndpoint" 
 		address="http://localhost:9000/init"
 		wsdlURL="src/main/resources/META-INF/init.wsdl">
 		<cxf:properties>
+			<!-- el dataFormat se puede poner tambien en el route 
+			de esta manera: 
+			from("cxf:bean:codeFirstEndpoint?dataFormat=PAYLOAD") -->
+			<entry key="dataFormat" value="PAYLOAD" />
+		</cxf:properties>
+	</cxf:cxfEndpoint>
+
+	<!-- Este WS es un consumer endpoint (o sea, para usar en un 'from') -->
+	<cxf:cxfEndpoint id="codeFirstEndpoint" 
+		address="http://localhost:9000/init"
+		serviceClass="com.camel.first.ws.CodeFirstWS">
+		<cxf:properties>
+			<!-- el dataFormat se puede poner tambien en el route 
+			de esta manera: 
+			from("cxf:bean:codeFirstEndpoint?dataFormat=PAYLOAD") -->
 			<entry key="dataFormat" value="PAYLOAD" />
 		</cxf:properties>
 	</cxf:cxfEndpoint>

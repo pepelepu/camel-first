@@ -20,9 +20,14 @@ public class FirstRoute extends RouteBuilder {
 		 * Punto de entrada del route.
 		 * 
 		 * Es un web service "consumer" que se expone, realiza todas las
-		 * operaciones del route, y responde
+		 * operaciones del route, y responde.
+		 * 
+		 * Tip: sin el prefijo "cxf:bean:" funciona.
 		 */
-		from("cxf:bean:soapMessageEndpoint?dataFormat=PAYLOAD")
+		from("codeFirstEndpoint")
+
+				// from("soapMessageEndpoint")
+
 				.id("FirstRoute")
 
 				/**
@@ -91,10 +96,12 @@ public class FirstRoute extends RouteBuilder {
 				 * Esta es una llamada "producer", es un cliente.
 				 * 
 				 * Llamamos al WS de Avalon
+				 * 
+				 * Tip: sin el prefijo "cxf:bean:" funciona.
 				 */
-				.to("cxf:bean:avalonEndpoint").id("avalonWS")
+				.to("avalonEndpoint").id("avalonWS")
 
-				// .to("spring-ws:http://xxxxx.com.ar:7778/avalonWS/AvalonWS")
+				// .to("spring-ws:http://baslije12.nextel.com.ar:7778/avalonWS/AvalonWS")
 
 				/**
 				 * Ejemplo de cómo llamar a un process en el medio

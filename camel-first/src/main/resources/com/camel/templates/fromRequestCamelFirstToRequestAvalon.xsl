@@ -6,7 +6,8 @@
 	<xsl:template match="/">
 
 		<customerCode>
-			<xsl:value-of select="*/cliente" />
+			<!-- xpath tutorial: "cliente" -> Selects all nodes with the name "cliente" -->
+			<xsl:value-of select="cliente" />
 		</customerCode>
 
 	</xsl:template>

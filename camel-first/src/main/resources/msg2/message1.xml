@@ -1,4 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-<obtenerContratoCuenta>
+<ns:obtenerContratoCuenta xmlns:ns="http://facade.avalon.nextel.com.ar">
 	<customerCode>2.11</customerCode>
-</obtenerContratoCuenta>
+</ns:obtenerContratoCuenta>

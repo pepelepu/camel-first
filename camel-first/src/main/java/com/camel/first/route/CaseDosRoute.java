@@ -20,7 +20,7 @@ public class CaseDosRoute extends RouteBuilder {
 				.setHeader("customerCode", constant("2.13"))
 				.bean(WithParamsBean.class)
 				// llamada al WS
-				.to("cxf:bean:avalonEndpoint").id("avalonWS-withParams")
+				.to("avalonEndpoint").id("avalonWS-withParams")
 
 				// log
 				.log(LoggingLevel.INFO, "estamos en el caso dos")
@@ -36,9 +36,12 @@ public class CaseDosRoute extends RouteBuilder {
 				.log(LoggingLevel.INFO, "${body}")
 
 				// llamada al WS
-				.to("cxf:bean:avalonEndpoint").id("avalonWS-withXSL")
+				.to("avalonEndpoint").id("avalonWS-withXSL")
 
 				// log del body
-				.log(LoggingLevel.INFO, "${body}");
+				.log(LoggingLevel.INFO, "${body}")
+
+				// to file
+				.to("file://salida");
 	}
 }
