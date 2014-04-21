@@ -10,24 +10,7 @@ public class FirstRoute extends RouteBuilder {
 
 	public void configure() throws Exception {
 
-		// inicio route, entrada por archivo
-		// from("file:src/main/resources/msg2?noop=true")
-		// log del filename y body
-		// .log(LoggingLevel.INFO,
-		// "Leyendo el archivo ${file:name} \n ${body}")
-
-		/**
-		 * Punto de entrada del route.
-		 * 
-		 * Es un web service "consumer" que se expone, realiza todas las
-		 * operaciones del route, y responde.
-		 * 
-		 * Tip: sin el prefijo "cxf:bean:" funciona.
-		 */
-		from("codeFirstEndpoint")
-
-				// from("soapMessageEndpoint")
-
+		from("direct:entradaFirstRoute")
 				.id("FirstRoute")
 
 				/**

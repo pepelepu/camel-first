@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-	xmlns:cxf="http://camel.apache.org/schema/cxf"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:cxf="http://camel.apache.org/schema/cxf"
 	xsi:schemaLocation="
         http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
         http://camel.apache.org/schema/cxf http://camel.apache.org/schema/cxf/camel-cxf.xsd
@@ -12,20 +11,25 @@
 	<bean id="secondRoute" class="com.camel.first.route.SecondRoute" />
 	<bean id="caseUnoRoute" class="com.camel.first.route.CaseUnoRoute" />
 	<bean id="caseDosRoute" class="com.camel.first.route.CaseDosRoute" />
-
+	
 	<!-- <bean id="fromAtoB" class="com.camel.first.bean.FromAtoB" /> -->
 
 	<camelContext xmlns="http://camel.apache.org/schema/spring">
+
 		<routeBuilder ref="firstRoute" />
 		<routeBuilder ref="secondRoute" />
 		<routeBuilder ref="caseUnoRoute" />
 		<routeBuilder ref="caseDosRoute" />
+		
+		<route>
+			<from uri="direct:start" />
+			<to uri="direct:entradaFirstRoute" />
+			<to uri="mock:result" />
+		</route>
+		
 	</camelContext>
 
 	<!-- MOCK -->
 	<bean id="avalonEndpoint" class="com.camel.first.mock.AvalonEndpoint" />
-	
-	<!-- MOCK -->
-	<bean id="codeFirstEndpoint" class="com.camel.first.mock.CodeFirstEndpoint" />
 
 </beans>

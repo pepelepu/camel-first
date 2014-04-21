@@ -8,6 +8,7 @@
         http://camel.apache.org/schema/cxf http://camel.apache.org/schema/cxf/camel-cxf.xsd
         http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd">
 
+	<bean id="routeZero" class="com.camel.first.route.RouteZero" />
 	<bean id="firstRoute" class="com.camel.first.route.FirstRoute" />
 	<bean id="secondRoute" class="com.camel.first.route.SecondRoute" />
 	<bean id="caseUnoRoute" class="com.camel.first.route.CaseUnoRoute" />
@@ -16,6 +17,7 @@
 	<!-- <bean id="fromAtoB" class="com.camel.first.bean.FromAtoB" /> -->
 
 	<camelContext xmlns="http://camel.apache.org/schema/spring">
+		<routeBuilder ref="routeZero" />
 		<routeBuilder ref="firstRoute" />
 		<routeBuilder ref="secondRoute" />
 		<routeBuilder ref="caseUnoRoute" />
