@@ -54,6 +54,12 @@ public class FirstRoute extends RouteBuilder {
 				.to("xslt:com/camel/templates/fromRequestCamelFirstToRequestAvalon.xsl")
 
 				/**
+				 * log after transform
+				 */
+				.log(LoggingLevel.INFO,
+						"body despues del transform: \n ${body}")
+
+				/**
 				 * Atencion:
 				 * "When the WS endpoint parses an incoming operation invocation in PAYLOAD mode, it automatically sets the operationName header to the name of the invoked operation."
 				 * y tambien setea el operationNamespace.

@@ -11,8 +11,6 @@
 	<bean id="secondRoute" class="com.camel.first.route.SecondRoute" />
 	<bean id="caseUnoRoute" class="com.camel.first.route.CaseUnoRoute" />
 	<bean id="caseDosRoute" class="com.camel.first.route.CaseDosRoute" />
-	
-	<!-- <bean id="fromAtoB" class="com.camel.first.bean.FromAtoB" /> -->
 
 	<camelContext xmlns="http://camel.apache.org/schema/spring">
 

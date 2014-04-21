@@ -12,6 +12,10 @@ public class RouteZero extends RouteBuilder {
 		 * Este route solo incluye el punto de entrada. Este route no esta
 		 * incluido en el TEST. No agregar transformaciones, ni beans ni
 		 * process, porque no serán testeados por el test.
+		 * 
+		 * Para mockear el WS consumer, para el testing, la mejor manera que
+		 * encontré es llamar directo al "direct:entradaFirstRoute", sin pasar
+		 * por aca.
 		 */
 
 		// inicio route, entrada por archivo

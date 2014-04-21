@@ -25,11 +25,12 @@ public class MyFirstTest extends CamelSpringTestSupport {
 	@Test
 	public void testFirst() throws Exception {
 
+		String bodyToSend = "<cliente>2.13</cliente>";
 		String expectedBody = "<obtenerContratoCuentaReturn><cantActivos>0</cantActivos><cantNoActivos>6</cantNoActivos><cantSuspendidos>0</cantSuspendidos><customerCode>2.13</customerCode></obtenerContratoCuentaReturn>";
 
 		resultEndpoint.expectedBodiesReceived(expectedBody);
 
-		template.sendBody(expectedBody);
+		template.sendBody(bodyToSend);
 		// template.sendBodyAndHeader(expectedBody, "foo", "bar");
 
 		resultEndpoint.assertIsSatisfied();
