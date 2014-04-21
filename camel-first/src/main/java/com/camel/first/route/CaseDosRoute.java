@@ -39,9 +39,6 @@ public class CaseDosRoute extends RouteBuilder {
 				.to("avalonEndpoint").id("avalonWS-withXSL")
 
 				// log del body
-				.log(LoggingLevel.INFO, "${body}")
-
-				// to file
-				.to("file://salida");
+				.log(LoggingLevel.INFO, "${body}");
 	}
 }
